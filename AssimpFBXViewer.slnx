@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="AssimpFBXViewer/AssimpFBXViewer.vcxproj" Id="c7af44dd-77f5-44f4-ae3b-35417bfe25c2" />
+</Solution>
