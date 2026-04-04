@@ -1,0 +1,5 @@
+root = true
+
+# Force UTF-8 for text files in Visual Studio.
+[*]
+charset = utf-8
