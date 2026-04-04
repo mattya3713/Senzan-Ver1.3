@@ -104,7 +104,7 @@ public:
 	//-----------------------------------------------------------------------------
 	// アニメーション.
 	//-----------------------------------------------------------------------------
-	
+
 	// アニメーション設定(Index).
 	bool SetAnimationIndex(uint32_t Index);
 	inline uint32_t GetAnimationIndex() const noexcept { return m_CurrentAnimation; }
@@ -126,7 +126,7 @@ public:
 	//-----------------------------------------------------------------------------
 	// ボーンl.
 	//-----------------------------------------------------------------------------
-	
+
 	// ワールド行列取得.
 	bool GetBoneWorldMatrix(const std::string& BoneName, DirectX::XMMATRIX& OutMatrix) const;
 	bool GetBoneWorldMatrixByIndex(uint32_t BoneIndex, DirectX::XMMATRIX& OutMatrix) const;
@@ -175,16 +175,16 @@ private:
 private:
     // ノード階層を再帰的に処理.
     void ProcessNode(
-		DirectX11* pDX11, 
+		DirectX11* pDX11,
 		aiNode* pNode,
 		const aiScene* pScene,
 		const DirectX::XMMATRIX& ParentTransform);
 
     // メッシュを処理.
     FBXMesh* ProcessMesh(
-		DirectX11* pDX11, 
-		aiMesh* pMesh, 
-		const aiScene* pScene, 
+		DirectX11* pDX11,
+		aiMesh* pMesh,
+		const aiScene* pScene,
 		const DirectX::XMMATRIX& NodeTransform);
 
 	// アニメーション情報をキャッシュ構築.
@@ -192,7 +192,7 @@ private:
 
     // アニメーション時間でボーン変換を計算.
     void CalculateBoneTransforms(
-		float AnimationTime, 
+		float AnimationTime,
 		const aiNode* pNode,
 		const DirectX::XMMATRIX& ParentTransform);
 
@@ -240,5 +240,3 @@ private:
 	// サンプラーステート.
 	ID3D11SamplerState* m_pSamplerState;
 };
-
-

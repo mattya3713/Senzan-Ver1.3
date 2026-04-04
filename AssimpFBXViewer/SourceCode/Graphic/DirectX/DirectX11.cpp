@@ -45,7 +45,7 @@ HRESULT DirectX11::Create(HWND HWnd)
 	{
 		return E_FAIL;
 	}
-	
+
 	// 深度バッファ用の深度ステンシルビューを作成.
 	if( FAILED(
 		CreateDepthStencilBackBufferRTV() ) )

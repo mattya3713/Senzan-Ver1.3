@@ -199,7 +199,7 @@ void TestBoneAPI()
 	std::cout << "======================\n" << std::endl;
 }
 
-// レイキャストAPIのテスト. 
+// レイキャストAPIのテスト.
 void TestRaycastAPI()
 {
 	if (!g_pModel) return;
@@ -431,7 +431,7 @@ LRESULT CALLBACK WndProc(HWND HWnd, UINT Message, WPARAM WParam, LPARAM LParam)
 			{
 				// アニメーション切り替え.
 				g_pModel->SetAnimationIndex(anim_index);
-				std::cout << "Animation[" << anim_index << "]: " 
+				std::cout << "Animation[" << anim_index << "]: "
 					<< g_pModel->GetAnimationName(anim_index) << std::endl;
 			}
 		}

@@ -105,7 +105,7 @@ float4 PS_Main(VS_OUTPUT input) : SV_TARGET
 {
     // �e�N�X�`���T���v�����O.
     float4 texColor = g_Texture.Sample(g_Sampler, input.UV);
-    
+
     // �e�N�X�`�����o�C���h����Ă��Ȃ��ꍇ�͔����g�p.
     // TODO : �e�N�X�`���̗L�����`�F�b�N����萔.
     if (texColor.a < 0.01f && texColor.r < 0.01f && texColor.g < 0.01f && texColor.b < 0.01f)
@@ -116,16 +116,16 @@ float4 PS_Main(VS_OUTPUT input) : SV_TARGET
     // �ȈՃ��C�e�B���O�i�f�B���N�V���i�����C�g�j.
     float3 lightDir = normalize(float3(0.5f, -1.0f, 0.5f));
     float3 normal = normalize(input.Normal);
-    
+
     // �f�B�t���[�Y���C�e�B���O.
     float NdotL = max(dot(normal, -lightDir), 0.0f);
     float3 diffuse = Diffuse.rgb * NdotL;
-    
+
     // �A���r�G���g���C�e�B���O.
     float3 ambient = Ambient.rgb * 0.3f;
 
     // �ŏI�J���[.
     float3 finalColor = (ambient + diffuse) * texColor.rgb;
-    
+
     return float4(finalColor, texColor.a * Diffuse.a);
 }

@@ -48,7 +48,7 @@ bool FBXModel::Load(DirectX11* pDX11, const std::string& FilePath)
 	if (!pDX11) { return false; }
 
 	// Assimpフラグ設定.
-	unsigned int flags =				
+	unsigned int flags =
 		aiProcess_Triangulate |			// すべてのメッシュのプリミティブ型を三角形に変換.
 		aiProcess_GenNormals |			// 法線が存在しない場合、スムーズな法線を生成.
 		aiProcess_CalcTangentSpace |	// 接線と従法線を計算(通常マッピング用).
@@ -74,7 +74,7 @@ bool FBXModel::Load(DirectX11* pDX11, const std::string& FilePath)
 
 	// グローバル逆変換行列を取得.
 	m_GlobalInverseTransform = DirectX::XMMatrixInverse(
-		nullptr, 
+		nullptr,
 		ConvertMatrix(m_pScene->mRootNode->mTransformation));
 
 	// アニメーション数を取得.
@@ -136,12 +136,12 @@ void FBXModel::BuildAnimationCache()
 	for (int i = 0; i < m_AnimationCount; ++i)
 	{
 		const aiAnimation* anim = m_pScene->mAnimations[i];
-		
+
 		AnimationInfo info = {};
 		info.Name = anim->mName.C_Str();
 		info.Duration = static_cast<float>(anim->mDuration);
 		// 1秒あたりのtick数を設定,0の場合はデフォルト値を使用.
-		info.TicksPerSecond = (anim->mTicksPerSecond != 0.0) 
+		info.TicksPerSecond = (anim->mTicksPerSecond != 0.0)
 			? static_cast<float>(anim->mTicksPerSecond) : 25.0f;
 		info.Index = i;
 
@@ -207,7 +207,7 @@ void FBXModel::Render(DirectX11* pDX11)
 	};
 	p_context->UpdateSubresource(m_pCBWorld, 0, nullptr, &cb_world, 0, 0);
 	p_context->VSSetConstantBuffers(0, 1, &m_pCBWorld);
-	
+
 	// ボーン行列更新.
     cbSkeleton cb_bone = {};
     for (int i = 0; i < MAX_BONES; ++i)
@@ -388,7 +388,7 @@ const std::string& FBXModel::GetCurrentAnimationName() const
 
 // ボーン名からワールド行列を取得.
 bool FBXModel::GetBoneWorldMatrix(
-	const std::string& BoneName, 
+	const std::string& BoneName,
 	DirectX::XMMATRIX& OutMatrix) const
 {
     auto it = m_BoneMapping.find(BoneName);
@@ -410,7 +410,7 @@ bool FBXModel::GetBoneWorldMatrix(
 
 // ボーン名からワールド座標(位置)を取得.
 bool FBXModel::GetBoneWorldPosition(
-	const std::string& BoneName, 
+	const std::string& BoneName,
 	DirectX::XMFLOAT3& OutPosition) const
 {
 	DirectX::XMMATRIX world_mat = {};
@@ -427,7 +427,7 @@ bool FBXModel::GetBoneWorldPosition(
 
 // ボーンインデックスからワールド行列を取得.
 bool FBXModel::GetBoneWorldMatrixByIndex(
-	uint32_t BoneIndex, 
+	uint32_t BoneIndex,
 	DirectX::XMMATRIX& OutMatrix) const
 {
     if (BoneIndex >= m_BoneInfos.size())
@@ -496,9 +496,9 @@ bool FBXModel::RayCast(const FBXMesh::Ray& Ray, FBXMesh::HitInfo& OutHit) const
 
 // ノード階層を再帰的に処理.
 void FBXModel::ProcessNode(
-	DirectX11* pDX11, 
-	aiNode* pNode, 
-	const aiScene* pScene, 
+	DirectX11* pDX11,
+	aiNode* pNode,
+	const aiScene* pScene,
 	const DirectX::XMMATRIX& ParentTransform)
 {
     DirectX::XMMATRIX node_transform = ConvertMatrix(pNode->mTransformation);
@@ -524,8 +524,8 @@ void FBXModel::ProcessNode(
 
 // メッシュを処理.
 FBXMesh* FBXModel::ProcessMesh(
-	DirectX11* pDX11, 
-	aiMesh* pMesh, 
+	DirectX11* pDX11,
+	aiMesh* pMesh,
 	const aiScene* pScene,
 	const DirectX::XMMATRIX& NodeTransform)
 {
@@ -608,7 +608,7 @@ FBXMesh* FBXModel::ProcessMesh(
 
 // マテリアルを読み込む.
 FBXMesh::MaterialData FBXModel::LoadMaterial(
-	DirectX11* pDX11, 
+	DirectX11* pDX11,
 	aiMaterial* pMaterial)
 {
 	FBXMesh::MaterialData material = {};
@@ -958,7 +958,7 @@ void FBXModel::CalculateBoneTransforms(float AnimationTime, const aiNode* pNode,
     {
 		uint32_t bone_index = it->second;
 		m_BoneInfos[bone_index].GlobalTransform = global_transform;
-		m_BoneInfos[bone_index].FinalTransform = 
+		m_BoneInfos[bone_index].FinalTransform =
 			m_BoneInfos[bone_index].OffsetMatrix * global_transform * m_GlobalInverseTransform;
     }
 
@@ -1216,4 +1216,3 @@ bool FBXModel::CreateInputLayout(DirectX11* pDX11, ID3DBlob* pVertexShaderBlob)
 
 	return true;
 }
-
