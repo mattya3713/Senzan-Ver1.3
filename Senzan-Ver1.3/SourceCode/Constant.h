@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 #include <DirectXMath.h>
 //=================================================.
 //	定数.
@@ -7,8 +7,8 @@
 static constexpr int	WND_W = 1280;		// ウィンドウの幅.
 static constexpr float	WND_WF = 1280.f;	// ウィンドウの幅.
 static constexpr int	WND_H = 720;		// ウィンドウの高さ.
-static constexpr float	WND_HF = 720.f;	// ウィンドウの高さ.
-static constexpr int	FPS = 60;		// フレームレート.
+static constexpr float	WND_HF = 720.f;	    // ウィンドウの高さ.
+static constexpr int	FPS = 60;		    // フレームレート.
 static constexpr float  EPSILON_E3 = 1e-3f;	// 0.001f.
 static constexpr float  EPSILON_E4 = 1e-4f;	// 0.0001f.
 static constexpr float  EPSILON_E5 = 1e-5f;	// 0.00001f.

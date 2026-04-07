@@ -1,23 +1,7 @@
 #pragma once
 
-//Windows.hのmin/maxマクロを無効化.
-#ifndef NOMINMAX
-#define NOMINMAX
-#endif
-
-#include <Windows.h>
-#include <tchar.h>
-#include <crtdbg.h>
-
 //=============================================================================
-// アプリケーション定数
-//=============================================================================
-constexpr float WND_W = 1280.0f;	// ウィンドウ幅
-constexpr float WND_H = 720.0f;		// ウィンドウ高さ
-constexpr float FPS = 60.0f;		// フレームレート
-
-//=============================================================================
-// 安全解放マクロ
+// 螳牙�ｨ隗｣謾ｾ繝槭け繝ｭ
 //=============================================================================
 #ifndef SAFE_RELEASE
 #define SAFE_RELEASE(p) { if(p) { (p)->Release(); (p) = nullptr; } }

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Constant.h"	
+
 #ifndef NOMINMAX
 #define NOMINMAX
 #endif
