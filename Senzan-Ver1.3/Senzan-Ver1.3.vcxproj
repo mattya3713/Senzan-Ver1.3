@@ -165,6 +165,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SourceCode\Constant.h" />
+    <ClInclude Include="SourceCode\Game\04_InputDevice\Input.h" />
+    <ClInclude Include="SourceCode\Game\04_InputDevice\KeyInput\KeyInput.h" />
+    <ClInclude Include="SourceCode\Game\04_InputDevice\Mouse\Mouse.h" />
+    <ClInclude Include="SourceCode\Game\04_InputDevice\VirtualPad.h" />
+    <ClInclude Include="SourceCode\Game\04_InputDevice\XInput\XInput.h" />
+    <ClInclude Include="SourceCode\System\00_GameLoop\Loader.h" />
+    <ClInclude Include="SourceCode\System\00_GameLoop\Main.h" />
     <ClInclude Include="SourceCode\System\00_GameLoop\Time\Time.h" />
     <ClInclude Include="SourceCode\Global.h" />
     <ClInclude Include="SourceCode\Graphic\DirectX\DirectX12\DirectX12.h" />
@@ -172,6 +179,7 @@
     <ClInclude Include="SourceCode\MyMacro.h" />
     <ClInclude Include="SourceCode\pch.h" />
     <ClInclude Include="SourceCode\Graphic\FBX\FBXMesh.h" />
+    <ClInclude Include="SourceCode\System\10_Singleton\SceneManager\SceneManager.h" />
     <ClInclude Include="SourceCode\System\10_Singleton\SingletonTemplate.h" />
     <ClInclude Include="SourceCode\System\99_Utility\Buffer\Any.h" />
     <ClInclude Include="SourceCode\System\99_Utility\Buffer\Buffer.h" />
@@ -192,14 +200,22 @@
     <ClInclude Include="SourceCode\System\99_Utility\Transform\Transform.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="SourceCode\Game\04_InputDevice\Input.cpp" />
+    <ClCompile Include="SourceCode\Game\04_InputDevice\KeyInput\KeyInput.cpp" />
+    <ClCompile Include="SourceCode\Game\04_InputDevice\Mouse\Mouse.cpp" />
+    <ClCompile Include="SourceCode\Game\04_InputDevice\VirtualPad.cpp" />
+    <ClCompile Include="SourceCode\Game\04_InputDevice\XInput\XInput.cpp" />
+    <ClCompile Include="SourceCode\System\00_GameLoop\Loader.cpp" />
+    <ClCompile Include="SourceCode\System\00_GameLoop\Main.cpp" />
     <ClCompile Include="SourceCode\System\00_GameLoop\Time\Time.cpp" />
-    <ClCompile Include="SourceCode\System\00_GameLoop\main.cpp" />
     <ClCompile Include="SourceCode\Graphic\DirectX\DirectX12\DirectX12.cpp" />
     <ClCompile Include="SourceCode\Graphic\FBX\FBXMesh.cpp" />
     <ClCompile Include="SourceCode\Graphic\FBX\FBXModel.cpp" />
     <ClCompile Include="SourceCode\pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="SourceCode\System\00_GameLoop\WinMain.cpp" />
+    <ClCompile Include="SourceCode\System\10_Singleton\SceneManager\SceneManager.cpp" />
     <ClCompile Include="SourceCode\System\99_Utility\Buffer\Buffer.cpp" />
     <ClCompile Include="SourceCode\System\99_Utility\FileManager\FileManager.cpp" />
     <ClCompile Include="SourceCode\System\99_Utility\Hash\Crc32Table\HashTable.cpp" />

@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 /***********************************************************************************
 * Singletonテンプレートクラス.
@@ -31,19 +31,16 @@ template<typename T>
 class Singleton
 {
 public:
-	/************************************************
-	* @brief シングルトンのインスタンスを取得.
-	* @return インスタンスのポインタ.
-	************************************************/
-	static T* GetInstance()
+	// インスタンスを取得.
+	static T& GetInstance()
 	{
 		static T instance;
-		return &instance;
+		return instance;
 	}
 protected:
 	// 継承先以外でのコンストラクタ、デストラクタの使用禁止.
-	Singleton() {};
-	virtual ~Singleton() {};
+	Singleton() = default;
+	virtual ~Singleton() = default;
 private:
 	//コピー,代入禁止.
 	Singleton(const Singleton& obj) = delete;

@@ -1,7 +1,4 @@
 #include "DirectX12.h"
-#include "MyMacro.h"
-#include "Utility/String/FilePath/FilePath.h"
-#include "Utility/Assert/Assert.inl"
 #include <array>
 #include <iostream>
 #include <stdexcept>

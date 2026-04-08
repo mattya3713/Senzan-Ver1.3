@@ -1,5 +1,4 @@
 #include "Transform.h"
-#include "System/Utility/Math/Math.h"	
 
 #include <DirectXMath.h>
 #include <cmath>

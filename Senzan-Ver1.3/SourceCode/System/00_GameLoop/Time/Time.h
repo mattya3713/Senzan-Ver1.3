@@ -1,7 +1,6 @@
 #pragma once
-#include "System/Singleton/SingletonTemplate.h"
+#include "System/10_Singleton/SingletonTemplate.h"
 #include <chrono>
-
 
 /**********************************************************************************
 * @author    : 淵脇 未来.

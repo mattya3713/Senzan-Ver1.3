@@ -1,7 +1,19 @@
-#include "Main.h"
+﻿#include "Main.h"
+#include "System/Singleton/SceneManager/SceneManager.h"
+#include "Game/04_Time/Time.h"
+#include "Game/05_InputDevice/Input.h"
+#include "Game/05_InputDevice/VirtualPad.h"
+#include "System/Singleton/ResourceManager/ResourceManager.h"
+#include "System/GameLoop/Loader.h"
+#include "Graphic/DirectX/DirectX9/DirectX9.h"
+#include "Graphic/DirectX/DirectX11/DirectX11.h"
+#include "Singleton/PostEffectManager/PostEffectManager.h"
+#include "Singleton/FrameCaptureManager/FrameCaptureManager.h"
+#include "02_UIObject/Fade/FadeManager.h"
 
-#include "Game\04_InputDevice\Input.h"
-#include "System\00_GameLoop\Time\Time.h"
+#include "System/Singleton/ResourceManager/EffectManager/EffekseerManager.h"
+#include "System/Singleton/ImGui/CImGuiManager.h"
+#include "System/Singleton/ResourceManager/MeshManager/MeshManager.h"
 
 #ifdef _DEBUG
 #include <crtdbg.h>
@@ -10,45 +22,51 @@
 // ウィンドウを画面中央で起動を有効にする.
 #define ENABLE_WINDOWS_CENTERING
 
+//=================================================.
 // 定数.
-const TCHAR WND_TITLE[] = _T("閃斬-Ver1.3");
-const TCHAR APP_NAME[] = _T("閃斬-Ver1.3");
+//=================================================.
+const TCHAR WND_TITLE[] = _T("閃斬");
+const TCHAR APP_NAME[] = _T("閃斬");
 
+//=================================================.
 // コンストラクタ.
+//=================================================.
 Main::Main()
 	: m_hWnd            ( nullptr )
 	, m_pResourceLoader(std::make_unique<Loader>())
 {
 }
 
+//=================================================.
 // デストラクタ.
+//=================================================.
 Main::~Main()
 {
-	//CImGuiManager::Relese(); // ImGuiの終了処理.
+	CImGuiManager::Relese(); // ImGuiの終了処理.
 }
 
 // データロード処理.
 HRESULT Main::LoadData()
 {
 	// DirectXの初期化.
-	/*if (FAILED(DirectX9::GetInstance().Create(m_hWnd))) {
+	if (FAILED(DirectX9::GetInstance().Create(m_hWnd))) {
 		_ASSERT_EXPR(false, "DirectX9の初期化に失敗");
 	}
 
 	if (FAILED(DirectX11::GetInstance().Create(m_hWnd))) {
 		_ASSERT_EXPR(false, "DirectX11の初期化に失敗");
-	}*/
+	}
 	
-	//// ウィンドウハンドルを設定.
-	//Input::SethWnd(m_hWnd);
-	//VirtualPad::GetInstance().SetupDefaultBindings();
-	//ResourceManager::SethWnd(m_hWnd);
+	// ウィンドウハンドルを設定.
+	Input::SethWnd(m_hWnd);
+	VirtualPad::GetInstance().SetupDefaultBindings();
+	ResourceManager::SethWnd(m_hWnd);
 
-	//// ロード画面で使用するデータの読み込み.
-	//m_pResourceLoader->LoadData();
+	// ロード画面で使用するデータの読み込み.
+	m_pResourceLoader->LoadData();
 
-	//// リソースの読み込み開始.
-	//m_pResourceLoader->StartLoading();
+	// リソースの読み込み開始.
+	m_pResourceLoader->StartLoading();
 
 	// 必要に応じてデータロード処理を追加.
 	return S_OK;
@@ -56,33 +74,33 @@ HRESULT Main::LoadData()
 
 void Main::Create()
 {
-	//CImGuiManager::Init(m_hWnd);
+	CImGuiManager::Init(m_hWnd);
 
-	//SceneManager::GetInstance().LoadData();
-	//PostEffectManager::GetInstance().Initialize();
-	//FrameCaptureManager::GetInstance().Initialize();
+	SceneManager::GetInstance().LoadData();
+	PostEffectManager::GetInstance().Initialize();
+	FrameCaptureManager::GetInstance().Initialize();
 }
 
 // 更新処理.
 void Main::Update()
 {
-	//CImGuiManager::NewFrameSetting();
+	CImGuiManager::NewFrameSetting();
 
 	DebugImgui();
 
 	// フレームキャプチャマネージャ更新.
-	//FrameCaptureManager::GetInstance().Update(Time::GetInstance().GetDeltaTime());
+	FrameCaptureManager::GetInstance().Update(Time::GetInstance().GetDeltaTime());
 
 	// 再生中はゲームロジックをスキップ.
-	//if (FrameCaptureManager::GetInstance().IsPlaying())
-	//{
-	//	return;
-	//}
+	if (FrameCaptureManager::GetInstance().IsPlaying())
+	{
+		return;
+	}
 
 	SceneManager::GetInstance().Update();
 
     // SoundManager の更新（自動復帰タイマー等）.
-    //SoundManager::GetInstance().Update(Time::GetInstance().GetDeltaTime());
+    SoundManager::GetInstance().Update(Time::GetInstance().GetDeltaTime());
 
 	// マウスホイールのスクロール方向を初期化.
 	Input::SetWheelDirection(0);
@@ -109,57 +127,57 @@ void Main::Update()
 // 描画処理.
 void Main::Draw()
 {
-	//// リソースの読み込みが終わるまでゲームの描画を行わない.
-	//if (!m_pResourceLoader->IsLoadCompletion())
-	//{
-	//	m_pResourceLoader->Draw();
-	//	return;
-	//}
+	// リソースの読み込みが終わるまでゲームの描画を行わない.
+	if (!m_pResourceLoader->IsLoadCompletion())
+	{
+		m_pResourceLoader->Draw();
+		return;
+	}
 
-	//auto& fc = FrameCaptureManager::GetInstance();
+	auto& fc = FrameCaptureManager::GetInstance();
 
-	//// 再生中はキャプチャしたフレームを描画.
-	//if (fc.IsPlaying())
-	//{
-	//	fc.RenderPlayback(Time::GetInstance().GetDeltaTime());
-	//	CImGuiManager::Render();
-	//	DirectX11::GetInstance().Present();
-	//	return;
-	//}
+	// 再生中はキャプチャしたフレームを描画.
+	if (fc.IsPlaying())
+	{
+		fc.RenderPlayback(Time::GetInstance().GetDeltaTime());
+		CImGuiManager::Render();
+		DirectX11::GetInstance().Present();
+		return;
+	}
 
-	//// バックバッファのクリア.
-	//DirectX11::GetInstance().ClearBackBuffer();
+	// バックバッファのクリア.
+	DirectX11::GetInstance().ClearBackBuffer();
 
-	//auto& pe = PostEffectManager::GetInstance();
+	auto& pe = PostEffectManager::GetInstance();
 
-	//if (pe.IsGray()) {
-	//	pe.BeginSceneRender();
-	//	SceneManager::Draw();
+	if (pe.IsGray()) {
+		pe.BeginSceneRender();
+		SceneManager::Draw();
 
-	//	// 【歪みエフェクト用】シーンをResolveしてから背景テクスチャとしてEffekseerに渡す.
-	//	auto ctx = DirectX11::GetInstance().GetContext();
-	//	ctx->ResolveSubresource(pe.GetSceneResolvedTex(), 0, pe.GetSceneMSAATex(), 0, DXGI_FORMAT_R8G8B8A8_UNORM);
-	//	EffekseerManager::GetInstance().SetBackgroundTexture(pe.GetSceneSRV());
+		// 【歪みエフェクト用】シーンをResolveしてから背景テクスチャとしてEffekseerに渡す.
+		auto ctx = DirectX11::GetInstance().GetContext();
+		ctx->ResolveSubresource(pe.GetSceneResolvedTex(), 0, pe.GetSceneMSAATex(), 0, DXGI_FORMAT_R8G8B8A8_UNORM);
+		EffekseerManager::GetInstance().SetBackgroundTexture(pe.GetSceneSRV());
 
-	//	pe.DrawToBackBuffer();
-	//}
-	//else {
-	//	// 通常描画（レンダーターゲットを戻してから描画）.
-	//	DirectX11::GetInstance().ResetRenderTarget();
-	//	SceneManager::Draw();
-	//}
+		pe.DrawToBackBuffer();
+	}
+	else {
+		// 通常描画（レンダーターゲットを戻してから描画）.
+		DirectX11::GetInstance().ResetRenderTarget();
+		SceneManager::Draw();
+	}
 
-	//// キャプチャ中はフレームをコピー.
-	//if (fc.IsCapturing())
-	//{
-	//	fc.CaptureFrame();
-	//}
+	// キャプチャ中はフレームをコピー.
+	if (fc.IsCapturing())
+	{
+		fc.CaptureFrame();
+	}
 
-	//CImGuiManager::Render();
+	CImGuiManager::Render();
 
 
-	//// 画面に表示.
-	//DirectX11::GetInstance().Present();
+	// 画面に表示.
+	DirectX11::GetInstance().Present();
 }
 
 // 解放処理.
@@ -185,34 +203,34 @@ void Main::Loop()
 	const float loadUpdateInterval = 1.0f / 60.0f; // 読み込み更新の間隔 (60FPS目安).
 	float accumulatedTime = 0.0f;
 
-	//while (!m_pResourceLoader->IsLoadCompletion()
-	//	|| !FadeManager::GetInstance().IsFading()) {
-	//	DWORD currentTime = timeGetTime();                 // 現在の時間を取得.
-	//	float deltaTime = (currentTime - lastTime) / 1000.0f; // ミリ秒から秒に変換.
-	//	lastTime = currentTime;                            // 前の時間を更新.
+	while (!m_pResourceLoader->IsLoadCompletion()
+		|| !FadeManager::GetInstance().IsFading()) {
+		DWORD currentTime = timeGetTime();                 // 現在の時間を取得.
+		float deltaTime = (currentTime - lastTime) / 1000.0f; // ミリ秒から秒に変換.
+		lastTime = currentTime;                            // 前の時間を更新.
 
-	//	accumulatedTime += deltaTime;
-	//	if (accumulatedTime >= loadUpdateInterval) {
-	//		accumulatedTime = 0.0f; // タイマーをリセット.
+		accumulatedTime += deltaTime;
+		if (accumulatedTime >= loadUpdateInterval) {
+			accumulatedTime = 0.0f; // タイマーをリセット.
 
-	//		// データ読み込み.
-	//		m_pResourceLoader->Update();
-	//		m_pResourceLoader->Draw();
-	//	}
+			// データ読み込み.
+			m_pResourceLoader->Update();
+			m_pResourceLoader->Draw();
+		}
 
-	//	if (m_pResourceLoader->IsLoadCompletion()) {
-	//		FadeManager::GetInstance().StartFade(Fade::FadeType::FadeOut);
-	//	}
-	//}
-	//while (!FadeManager::GetInstance().IsFadeCompleted(Fade::FadeType::FadeOut))
-	//{
-	//	// Update fade and ensure the backbuffer is cleared each frame.
-	//	// so the fade sprite doesn't composite over an uninitialized/back buffer.
-	//	FadeManager::GetInstance().Update();
-	//	DirectX11::GetInstance().ClearBackBuffer();
-	//	FadeManager::GetInstance().Draw();
-	//	DirectX11::GetInstance().Present();
-	//}
+		if (m_pResourceLoader->IsLoadCompletion()) {
+			FadeManager::GetInstance().StartFade(Fade::FadeType::FadeOut);
+		}
+	}
+	while (!FadeManager::GetInstance().IsFadeCompleted(Fade::FadeType::FadeOut))
+	{
+		// Update fade and ensure the backbuffer is cleared each frame.
+		// so the fade sprite doesn't composite over an uninitialized/back buffer.
+		FadeManager::GetInstance().Update();
+		DirectX11::GetInstance().ClearBackBuffer();
+		FadeManager::GetInstance().Draw();
+		DirectX11::GetInstance().Present();
+	}
 
 
 	// データの読み込みが終わったらゲームを構築.
@@ -284,13 +302,12 @@ HRESULT Main::InitWindow(HINSTANCE hInstance, INT x, INT y, INT width, INT heigh
 // ウィンドウ関数（メッセージ毎の処理）.
 LRESULT CALLBACK Main::MsgProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
-	//extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
+	extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
-	//if (ImGui_ImplWin32_WndProcHandler(hWnd, uMsg, wParam, lParam))
-	//{
-	//	return true;
-	// 　
-	//}
+	if (ImGui_ImplWin32_WndProcHandler(hWnd, uMsg, wParam, lParam))
+	{
+		return true;
+	}
 	// hWndに関連付けられたCMainを取得.
 	// MEMO : ウィンドウが作成されるまでは nullptr になる可能性がある.
 	Main* pMain = reinterpret_cast<Main*>(GetWindowLongPtr(hWnd, GWLP_USERDATA));

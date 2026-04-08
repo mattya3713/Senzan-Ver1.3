@@ -1,10 +1,10 @@
-﻿#pragma once
+#pragma once
 
 #include <functional>
 
 /****************************
 *	一回だけ処理を通すクラス.
-*   担当:淵脇未来.
+*   担当:mattya3713.
 ****/
 
 

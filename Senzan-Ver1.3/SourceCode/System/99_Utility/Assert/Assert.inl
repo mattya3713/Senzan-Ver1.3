@@ -1,16 +1,14 @@
-﻿#pragma once
+#pragma once
+#include "99_Utility/String/String.h"
 
 #include <stdexcept>
 #include <type_traits>
 #include <sstream>
 #include <string>
 #include <string_view>
-#include <tuple>
-#include <locale>
 #include <windows.h>        // HRESULT と Windows API の定義が含まれる
 #include <d3dcompiler.h>    // Blobの定義が含まれる.
 
-#include "Utility\\String\\String.h"
 
 namespace MyAssert {
 

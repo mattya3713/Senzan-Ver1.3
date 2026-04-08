@@ -1,7 +1,9 @@
 #pragma once
-
-//警告についてのコード分析を無効にする.4005:再定義.
 #pragma warning(disable:4005)
+
+#include "System/99_Utility/ComPtr/ComPtr.h"
+#include "System/99_Utility/String/FilePath/FilePath.h"
+#include "System/99_Utility/Assert/Assert.inl"
 
 // ヘッダ読込.
 #include <string>
@@ -10,7 +12,6 @@
 #include <memory>
 #include <functional>
 
-#include "..\..\..\System\Utility\ComPtr\ComPtr.h"
 
 #include <d3d12.h>
 #include "..\..\..\..\Data\Library\DirectXTex\Common\d3dx12.h"
@@ -37,7 +38,7 @@ namespace DirectX
 constexpr size_t PmdVertexSize = 38;
 
 /**********************************************************
-* @author      : 淵脇未来.
+* @author      : mattya3713.
 * @date        : 2025/02/18.
 * @brief       : DirectX12セットアップ.
 **********************************************************/

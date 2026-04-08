@@ -1,8 +1,8 @@
-﻿#pragma once
+#pragma once
 #include <utility>
 
 /**********************************************************
-* @author      : 淵脇未来.
+* @author      : mattya3713.
 * @date        : 2025/XX/XX.
 * @brief       : DirectX COM リソース専用軽量スマートポインタ.
 *              : 参照カウントを管理し、所有権を安全に扱う.
