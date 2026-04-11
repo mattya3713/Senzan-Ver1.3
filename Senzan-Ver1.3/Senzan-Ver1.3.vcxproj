@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -31,6 +31,7 @@
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v145</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
+    <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -38,12 +39,14 @@
     <PlatformToolset>v145</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
+    <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v145</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
+    <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -51,6 +54,7 @@
     <PlatformToolset>v145</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
+    <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -84,7 +88,7 @@
       <ForcedIncludeFiles>pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(ProjectDir)Data\Library\DirectXTex\DirectXTex\Bin\Desktop_2022_Win10\$(Platform)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
@@ -96,7 +100,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir)SourceCode;$(ProjectDir)SourceCode\System;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)SourceCode;$(ProjectDir)SourceCode\System;$(ProjectDir)SourceCode\Resoure;$(ProjectDir)SourceCode\Graphic;$(ProjectDir)SourceCode\Game;$(ProjectDir)SourceCode\System\99_Utility;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
@@ -105,7 +109,7 @@
       <ForcedIncludeFiles>pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(ProjectDir)Data\Library\DirectXTex\DirectXTex\Bin\Desktop_2022_Win10\$(Platform)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
@@ -124,7 +128,7 @@
       <ForcedIncludeFiles>pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(ProjectDir)Data\Library\DirectXTex\DirectXTex\Bin\Desktop_2022_Win10\$(Platform)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
@@ -145,7 +149,7 @@
       <ForcedIncludeFiles>pch.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(ProjectDir)Data\Library\DirectXTex\DirectXTex\Bin\Desktop_2022_Win10\$(Platform)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
@@ -155,32 +159,52 @@
     <None Include="Doc\CODING_STYLE.md" />
     <None Include="SourceCode\Graphic\Shader\DebugDraw.hlsl" />
     <None Include="SourceCode\Graphic\Shader\Skinning.hlsl" />
+    <None Include="SourceCode\System\10_Singleton\01_SceneManager\SceneRegistry.Generate.targets" />
+    <None Include="SourceCode\System\10_Singleton\SceneManager\SceneRegistry.Generate.targets" />
     <None Include="SourceCode\System\99_Utility\Assert\Assert.inl" />
     <None Include="SourceCode\System\99_Utility\Math\Easing\Easing.inl" />
     <None Include="SourceCode\System\99_Utility\Math\Math.inl" />
     <None Include="SourceCode\System\99_Utility\String\FilePath\FilePath.inl" />
+    <None Include="Tools\GenerateSceneRegistry.ps1" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SourceCode\Constant.h" />
+    <ClInclude Include="SourceCode\Game\00_Scene\00_Base\SceneBase.h" />
+    <ClInclude Include="SourceCode\Game\00_Scene\01_Title\Title.h" />
+    <ClInclude Include="SourceCode\Game\00_Scene\02_GameMain\GameMain.h" />
+    <ClInclude Include="SourceCode\Game\00_Scene\Ex_Test\00_mattya3713\MattyaTestScene.h" />
+    <ClInclude Include="SourceCode\Game\01_GameObject\02_UIObject\UIObject.h" />
+    <ClInclude Include="SourceCode\Game\01_GameObject\GameObject.h" />
     <ClInclude Include="SourceCode\Game\04_InputDevice\Input.h" />
     <ClInclude Include="SourceCode\Game\04_InputDevice\KeyInput\KeyInput.h" />
     <ClInclude Include="SourceCode\Game\04_InputDevice\Mouse\Mouse.h" />
     <ClInclude Include="SourceCode\Game\04_InputDevice\VirtualPad.h" />
     <ClInclude Include="SourceCode\Game\04_InputDevice\XInput\XInput.h" />
+    <ClInclude Include="SourceCode\Graphic\Fade\Fade.h" />
+    <ClInclude Include="SourceCode\Resource\Effect\EffectResource.h" />
+    <ClInclude Include="SourceCode\Resource\Mesh\00_Sprite\WorldSprite\WorldSprite.h" />
+    <ClInclude Include="SourceCode\Resource\Mesh\00_Sprite\UISprite\UISprite.h" />
+    <ClInclude Include="SourceCode\Resource\Mesh\MeshBase.h" />
+    <ClInclude Include="SourceCode\Resource\Sound\DirectSound.h" />
     <ClInclude Include="SourceCode\System\00_GameLoop\Loader.h" />
     <ClInclude Include="SourceCode\System\00_GameLoop\Main.h" />
     <ClInclude Include="SourceCode\System\00_GameLoop\Time\Time.h" />
     <ClInclude Include="SourceCode\Global.h" />
     <ClInclude Include="SourceCode\Graphic\DirectX\DirectX12\DirectX12.h" />
-    <ClInclude Include="SourceCode\Graphic\FBX\FBXModel.h" />
+    <ClInclude Include="SourceCode\Resource\Mesh\FBX\FBXModel.h" />
     <ClInclude Include="SourceCode\MyMacro.h" />
     <ClInclude Include="SourceCode\pch.h" />
-    <ClInclude Include="SourceCode\Graphic\FBX\FBXMesh.h" />
+    <ClInclude Include="SourceCode\Resource\Mesh\FBX\FBXMesh.h" />
+    <ClInclude Include="SourceCode\System\10_Singleton\00_FadeManager\FadeManager.h" />
+    <ClInclude Include="SourceCode\System\10_Singleton\01_SceneManager\SceneManager.h" />
+    <ClInclude Include="SourceCode\System\10_Singleton\01_SceneManager\SceneRegistry.generated.h" />
     <ClInclude Include="SourceCode\System\10_Singleton\SceneManager\SceneManager.h" />
+    <ClInclude Include="SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.h" />
     <ClInclude Include="SourceCode\System\10_Singleton\SingletonTemplate.h" />
+    <ClInclude Include="SourceCode\System\10_Singleton\UIObjectManager\UIObjectManager.h" />
     <ClInclude Include="SourceCode\System\99_Utility\Buffer\Any.h" />
     <ClInclude Include="SourceCode\System\99_Utility\Buffer\Buffer.h" />
     <ClInclude Include="SourceCode\System\99_Utility\Color\Color.h" />
@@ -197,29 +221,46 @@
     <ClInclude Include="SourceCode\System\99_Utility\StateMachine\StateMachine.h" />
     <ClInclude Include="SourceCode\System\99_Utility\String\FilePath\FilePath.h" />
     <ClInclude Include="SourceCode\System\99_Utility\String\String.h" />
+    <ClInclude Include="SourceCode\System\99_Utility\Transform\RectTransform.h" />
     <ClInclude Include="SourceCode\System\99_Utility\Transform\Transform.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="SourceCode\Game\00_Scene\00_Base\SceneBase.cpp" />
+    <ClCompile Include="SourceCode\Game\00_Scene\01_Title\Title.cpp" />
+    <ClCompile Include="SourceCode\Game\00_Scene\02_GameMain\GameMain.cpp" />
+    <ClCompile Include="SourceCode\Game\00_Scene\Ex_Test\00_mattya3713\MattyaTestScene.cpp" />
+    <ClCompile Include="SourceCode\Game\01_GameObject\02_UIObject\UIObject.cpp" />
+    <ClCompile Include="SourceCode\Game\01_GameObject\GameObject.cpp" />
     <ClCompile Include="SourceCode\Game\04_InputDevice\Input.cpp" />
     <ClCompile Include="SourceCode\Game\04_InputDevice\KeyInput\KeyInput.cpp" />
     <ClCompile Include="SourceCode\Game\04_InputDevice\Mouse\Mouse.cpp" />
     <ClCompile Include="SourceCode\Game\04_InputDevice\VirtualPad.cpp" />
     <ClCompile Include="SourceCode\Game\04_InputDevice\XInput\XInput.cpp" />
+    <ClCompile Include="SourceCode\Graphic\Fade\Fade.cpp" />
+    <ClCompile Include="SourceCode\Resource\Effect\EffectResource.cpp" />
+    <ClCompile Include="SourceCode\Resource\Mesh\00_Sprite\WorldSprite\WorldSprite.cpp" />
+    <ClCompile Include="SourceCode\Resource\Mesh\00_Sprite\UISprite\UISprite.cpp" />
+    <ClCompile Include="SourceCode\Resource\Mesh\MeshBase.cpp" />
+    <ClCompile Include="SourceCode\Resource\Sound\DirectSound.cpp" />
     <ClCompile Include="SourceCode\System\00_GameLoop\Loader.cpp" />
     <ClCompile Include="SourceCode\System\00_GameLoop\Main.cpp" />
     <ClCompile Include="SourceCode\System\00_GameLoop\Time\Time.cpp" />
     <ClCompile Include="SourceCode\Graphic\DirectX\DirectX12\DirectX12.cpp" />
-    <ClCompile Include="SourceCode\Graphic\FBX\FBXMesh.cpp" />
-    <ClCompile Include="SourceCode\Graphic\FBX\FBXModel.cpp" />
+    <ClCompile Include="SourceCode\Resource\Mesh\FBX\FBXMesh.cpp" />
+    <ClCompile Include="SourceCode\Resource\Mesh\FBX\FBXModel.cpp" />
     <ClCompile Include="SourceCode\pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="SourceCode\System\00_GameLoop\WinMain.cpp" />
-    <ClCompile Include="SourceCode\System\10_Singleton\SceneManager\SceneManager.cpp" />
+    <ClCompile Include="SourceCode\System\10_Singleton\00_FadeManager\FadeManager.cpp" />
+    <ClCompile Include="SourceCode\System\10_Singleton\01_SceneManager\SceneManager.cpp" />
+    <ClCompile Include="SourceCode\System\10_Singleton\01_SceneManager\SceneRegistry.generated.cpp" />
+    <ClCompile Include="SourceCode\System\10_Singleton\11_UIObjectManager\UIObjectManager.cpp" />
     <ClCompile Include="SourceCode\System\99_Utility\Buffer\Buffer.cpp" />
     <ClCompile Include="SourceCode\System\99_Utility\FileManager\FileManager.cpp" />
     <ClCompile Include="SourceCode\System\99_Utility\Hash\Crc32Table\HashTable.cpp" />
     <ClCompile Include="SourceCode\System\99_Utility\String\String.cpp" />
+    <ClCompile Include="SourceCode\System\99_Utility\Transform\RectTransform.cpp" />
     <ClCompile Include="SourceCode\System\99_Utility\Transform\Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -245,3 +286,4 @@
     <Error Condition="!Exists('..\packages\AssimpCpp.5.0.1.6\build\native\AssimpCpp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\AssimpCpp.5.0.1.6\build\native\AssimpCpp.targets'))" />
   </Target>
 </Project>
+

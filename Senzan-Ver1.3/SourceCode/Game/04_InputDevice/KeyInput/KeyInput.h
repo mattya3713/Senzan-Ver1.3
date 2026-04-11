@@ -1,5 +1,5 @@
-﻿#pragma once
-#include "System/Singleton/SingletonTemplate.h"
+#pragma once
+#include "System/10_Singleton/SingletonTemplate.h"
 
 
 /**********************************************************************************

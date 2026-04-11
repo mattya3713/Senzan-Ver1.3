@@ -1,7 +1,11 @@
 #include "Main.h"
+#include "System/00_GameLoop/Loader.h"
 
-#include "Game\04_InputDevice\Input.h"
-#include "System\00_GameLoop\Time\Time.h"
+#include "Graphic/DirectX/DirectX12/DirectX12.h"
+
+#include "Game/04_InputDevice/Input.h"
+#include "System/00_GameLoop/Time/Time.h"
+#include "System/10_Singleton/01_SceneManager/SceneManager.h"
 
 #ifdef _DEBUG
 #include <crtdbg.h>
@@ -16,8 +20,9 @@ const TCHAR APP_NAME[] = _T("閃斬-Ver1.3");
 
 // コンストラクタ.
 Main::Main()
-	: m_hWnd            ( nullptr )
-	, m_pResourceLoader(std::make_unique<Loader>())
+	: m_hWnd		( nullptr )
+	, m_upDirectX12	( std::make_unique<DirectX12>() )
+//	, m_pResourceLoader(std::make_unique<Loader>())
 {
 }
 
@@ -30,59 +35,36 @@ Main::~Main()
 // データロード処理.
 HRESULT Main::LoadData()
 {
-	// DirectXの初期化.
-	/*if (FAILED(DirectX9::GetInstance().Create(m_hWnd))) {
-		_ASSERT_EXPR(false, "DirectX9の初期化に失敗");
+ if (m_upDirectX12 == nullptr) {
+		return E_FAIL;
 	}
 
-	if (FAILED(DirectX11::GetInstance().Create(m_hWnd))) {
-		_ASSERT_EXPR(false, "DirectX11の初期化に失敗");
-	}*/
-	
-	//// ウィンドウハンドルを設定.
-	//Input::SethWnd(m_hWnd);
-	//VirtualPad::GetInstance().SetupDefaultBindings();
-	//ResourceManager::SethWnd(m_hWnd);
+	if (!m_upDirectX12->Create(m_hWnd)) {
+		_ASSERT_EXPR(false, _T("DirectX12の初期化に失敗"));
+		return E_FAIL;
+	}
 
-	//// ロード画面で使用するデータの読み込み.
-	//m_pResourceLoader->LoadData();
+	// ウィンドウハンドルを設定.
+	Input::SethWnd(m_hWnd);
 
-	//// リソースの読み込み開始.
-	//m_pResourceLoader->StartLoading();
+	SceneManager::GetInstance().LoadData();
 
-	// 必要に応じてデータロード処理を追加.
 	return S_OK;
 }
 
 void Main::Create()
 {
-	//CImGuiManager::Init(m_hWnd);
-
-	//SceneManager::GetInstance().LoadData();
-	//PostEffectManager::GetInstance().Initialize();
-	//FrameCaptureManager::GetInstance().Initialize();
+  // 生成処理が必要になった場合はここへ追加.
 }
 
 // 更新処理.
 void Main::Update()
 {
-	//CImGuiManager::NewFrameSetting();
+	m_upDirectX12->Update();
 
 	DebugImgui();
 
-	// フレームキャプチャマネージャ更新.
-	//FrameCaptureManager::GetInstance().Update(Time::GetInstance().GetDeltaTime());
-
-	// 再生中はゲームロジックをスキップ.
-	//if (FrameCaptureManager::GetInstance().IsPlaying())
-	//{
-	//	return;
-	//}
-
 	SceneManager::GetInstance().Update();
-
-    // SoundManager の更新（自動復帰タイマー等）.
-    //SoundManager::GetInstance().Update(Time::GetInstance().GetDeltaTime());
 
 	// マウスホイールのスクロール方向を初期化.
 	Input::SetWheelDirection(0);
@@ -109,67 +91,22 @@ void Main::Update()
 // 描画処理.
 void Main::Draw()
 {
-	//// リソースの読み込みが終わるまでゲームの描画を行わない.
-	//if (!m_pResourceLoader->IsLoadCompletion())
-	//{
-	//	m_pResourceLoader->Draw();
-	//	return;
-	//}
+    if (m_upDirectX12 == nullptr) {
+		return;
+	}
 
-	//auto& fc = FrameCaptureManager::GetInstance();
-
-	//// 再生中はキャプチャしたフレームを描画.
-	//if (fc.IsPlaying())
-	//{
-	//	fc.RenderPlayback(Time::GetInstance().GetDeltaTime());
-	//	CImGuiManager::Render();
-	//	DirectX11::GetInstance().Present();
-	//	return;
-	//}
-
-	//// バックバッファのクリア.
-	//DirectX11::GetInstance().ClearBackBuffer();
-
-	//auto& pe = PostEffectManager::GetInstance();
-
-	//if (pe.IsGray()) {
-	//	pe.BeginSceneRender();
-	//	SceneManager::Draw();
-
-	//	// 【歪みエフェクト用】シーンをResolveしてから背景テクスチャとしてEffekseerに渡す.
-	//	auto ctx = DirectX11::GetInstance().GetContext();
-	//	ctx->ResolveSubresource(pe.GetSceneResolvedTex(), 0, pe.GetSceneMSAATex(), 0, DXGI_FORMAT_R8G8B8A8_UNORM);
-	//	EffekseerManager::GetInstance().SetBackgroundTexture(pe.GetSceneSRV());
-
-	//	pe.DrawToBackBuffer();
-	//}
-	//else {
-	//	// 通常描画（レンダーターゲットを戻してから描画）.
-	//	DirectX11::GetInstance().ResetRenderTarget();
-	//	SceneManager::Draw();
-	//}
-
-	//// キャプチャ中はフレームをコピー.
-	//if (fc.IsCapturing())
-	//{
-	//	fc.CaptureFrame();
-	//}
-
-	//CImGuiManager::Render();
-
-
-	//// 画面に表示.
-	//DirectX11::GetInstance().Present();
+	m_upDirectX12->BeginDraw();
+	SceneManager::Draw();
+	m_upDirectX12->EndDraw();
 }
 
 // 解放処理.
 void Main::Release()
 {
-   
+	m_upDirectX12.reset();
 }
 
 // メッセージループ.
-
 void Main::Loop()
 {
 	// ゲームの構築.
@@ -179,41 +116,6 @@ void Main::Loop()
 
 	// タイマ精度を向上させる.
 	timeBeginPeriod(1);
-
-	// 読み込み完了待ち処理.
-	DWORD lastTime = timeGetTime(); // 前のフレームの時間.
-	const float loadUpdateInterval = 1.0f / 60.0f; // 読み込み更新の間隔 (60FPS目安).
-	float accumulatedTime = 0.0f;
-
-	//while (!m_pResourceLoader->IsLoadCompletion()
-	//	|| !FadeManager::GetInstance().IsFading()) {
-	//	DWORD currentTime = timeGetTime();                 // 現在の時間を取得.
-	//	float deltaTime = (currentTime - lastTime) / 1000.0f; // ミリ秒から秒に変換.
-	//	lastTime = currentTime;                            // 前の時間を更新.
-
-	//	accumulatedTime += deltaTime;
-	//	if (accumulatedTime >= loadUpdateInterval) {
-	//		accumulatedTime = 0.0f; // タイマーをリセット.
-
-	//		// データ読み込み.
-	//		m_pResourceLoader->Update();
-	//		m_pResourceLoader->Draw();
-	//	}
-
-	//	if (m_pResourceLoader->IsLoadCompletion()) {
-	//		FadeManager::GetInstance().StartFade(Fade::FadeType::FadeOut);
-	//	}
-	//}
-	//while (!FadeManager::GetInstance().IsFadeCompleted(Fade::FadeType::FadeOut))
-	//{
-	//	// Update fade and ensure the backbuffer is cleared each frame.
-	//	// so the fade sprite doesn't composite over an uninitialized/back buffer.
-	//	FadeManager::GetInstance().Update();
-	//	DirectX11::GetInstance().ClearBackBuffer();
-	//	FadeManager::GetInstance().Draw();
-	//	DirectX11::GetInstance().Present();
-	//}
-
 
 	// データの読み込みが終わったらゲームを構築.
 	Create();
@@ -330,17 +232,18 @@ LRESULT CALLBACK Main::MsgProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lPara
 void Main::IsExitGame()
 {
 	constexpr int Esc = VK_ESCAPE;
-	bool wasEscPressed = !Input::IsKeyPress(Esc);
+   bool was_esc_pressed = !Input::IsKeyPress(Esc);
+	UNREFERENCED_PARAMETER(was_esc_pressed);
 
-	float currentTime = Time::GetInstance().GetNowTime(); // 現在のゲーム内時刻を取得.
+  float current_time = Time::GetInstance().GetNowTime(); // 現在のゲーム内時刻を取得.
 
 	if (Input::IsKeyDown(Esc)) // Escキーが押された瞬間.
 	{
 		// 前回からの経過時間を計算.
-		float elapsedTime = currentTime - m_LastEscPressTime;
+       float elapsed_time = current_time - m_LastEscPressTime;
 
 		// ダブルタップの判定.
-		if (elapsedTime < DOUBLE_TAP_TIME_THRESHOLD)
+        if (elapsed_time < DOUBLE_TAP_TIME_THRESHOLD)
 		{
 			if (MessageBox(m_hWnd, _T("ゲームを終了しますか？"), _T("警告"), MB_YESNO) == IDYES) {
 				DestroyWindow(m_hWnd);
@@ -350,7 +253,7 @@ void Main::IsExitGame()
 		else
 		{
 			// シングルタップとみなし、次回判定のために時刻を更新.
-			m_LastEscPressTime = currentTime;
+           m_LastEscPressTime = current_time;
 		}
 	}
 }

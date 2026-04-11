@@ -1,13 +1,13 @@
-﻿#pragma once
-#include "Game/05_InputDevice/Input.h"
-#include "System/Singleton/SingletonTemplate.h"
+#pragma once
+#include "Game/04_InputDevice/Input.h"
+#include "System/10_Singleton/SingletonTemplate.h"
 
 /**********************************************************************************
 * @author    : 淵脇 未来.
 * @date      : 2025/10/5.
-* @brief     : 仮想パッド入力ラッパークラス.
-*             キーボード/マウス/コントローラ等の入力を抽象化して
-*             ゲーム内のアクションへマッピングする機能を提供します。
+* @brief     : 仮想パッドクラス.
+*            : キーボード/マウス/コントローラ等の入力を統合して
+*            : ゲーム内のアクションへマッピングする
 **********************************************************************************/
 class VirtualPad final 
     : public Singleton<VirtualPad>
@@ -48,15 +48,15 @@ public:
         Move,
     };
 
-    // アクションのタイプ（ボタンか軸か）。.
+    // アクションのタイプ(ボタンか軸か).
     enum class eActionType
     {
         Button,
         Axis
     };
 
-    // 入力ソースを表す構造体。.
-    // キーボード/マウス/コントローラ等の情報を保持します。
+    // 入力ソースを表す構造体.
+    // キーボード/マウス/コントローラ等の情報を保持します.
     struct InputSource
     {
         enum class eSourceType
@@ -71,7 +71,7 @@ public:
         };
 
         eSourceType Type;                        // 入力ソースの種類.
-        int KeyCode = 0;                         // キーコード（キーボード用）.
+        int KeyCode = 0;                         // キーコード(キーボード用).
         XInput::Key ControllerKey = XInput::Key::None; // コントローラボタン.
 
         XInput::StickState StickState = XInput::StickState::None; // スティック状態.
@@ -87,7 +87,7 @@ public:
 
         eStickTarget StickTarget = eStickTarget::None; // スティックの対象.
         
-        float Scale = 1.0f;                       // 入力スケール（軸系で使用）.
+        float Scale = 1.0f;                       // 入力スケール(軸系で使用).
     };
 
     // アクションにバインドされた入力群を表す構造体。.

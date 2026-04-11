@@ -1,5 +1,5 @@
-﻿#pragma once
-#include "System/Singleton/SingletonTemplate.h"
+#pragma once
+#include "System/10_Singleton/SingletonTemplate.h"
 #include "KeyInput\KeyInput.h"
 #include "Mouse\Mouse.h"
 #include "XInput\XInput.h"

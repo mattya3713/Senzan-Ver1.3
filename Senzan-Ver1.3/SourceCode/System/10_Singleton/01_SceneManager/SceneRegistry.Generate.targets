@@ -1,0 +1,109 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Target Name="GenerateSceneRegistry" BeforeTargets="ClCompile">
+    <ItemGroup>
+      <SceneHeader Include="$(ProjectDir)SourceCode\Game\00_Scene\**\*.h" Exclude="$(ProjectDir)SourceCode\Game\00_Scene\00_Base\**\*" />
+    </ItemGroup>
+
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.h" Overwrite="true" Encoding="UTF-8" Lines="/**********************************************************" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.h" Overwrite="false" Encoding="UTF-8" Lines="* @author      : mattya3713." />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.h" Overwrite="false" Encoding="UTF-8" Lines="* @date        : yyyy/mm/dd." />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.h" Overwrite="false" Encoding="UTF-8" Lines="* @brief       : シーンレジストリ自動生成ヘッダ." />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.h" Overwrite="false" Encoding="UTF-8" Lines="**********************************************************/" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.h" Overwrite="false" Encoding="UTF-8" Lines="" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.h" Overwrite="false" Encoding="UTF-8" Lines="#pragma once" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.h" Overwrite="false" Encoding="UTF-8" Lines="" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.h" Overwrite="false" Encoding="UTF-8" Lines="#include &lt;cstddef&gt;" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.h" Overwrite="false" Encoding="UTF-8" Lines="#include &lt;memory&gt;" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.h" Overwrite="false" Encoding="UTF-8" Lines="#include &lt;string_view&gt;" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.h" Overwrite="false" Encoding="UTF-8" Lines="" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.h" Overwrite="false" Encoding="UTF-8" Lines="class SceneBase;" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.h" Overwrite="false" Encoding="UTF-8" Lines="" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.h" Overwrite="false" Encoding="UTF-8" Lines="enum class eList" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.h" Overwrite="false" Encoding="UTF-8" Lines="{" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.h" Overwrite="false" Encoding="UTF-8" Lines="@(SceneHeader->'    %(Filename),')" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.h" Overwrite="false" Encoding="UTF-8" Lines="    MAX," />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.h" Overwrite="false" Encoding="UTF-8" Lines="};" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.h" Overwrite="false" Encoding="UTF-8" Lines="" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.h" Overwrite="false" Encoding="UTF-8" Lines="std::unique_ptr&lt;SceneBase&gt; CreateSceneById(eList SceneId);" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.h" Overwrite="false" Encoding="UTF-8" Lines="const char* GetSceneName(eList SceneId);" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.h" Overwrite="false" Encoding="UTF-8" Lines="std::size_t GetSceneCount();" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.h" Overwrite="false" Encoding="UTF-8" Lines="eList GetSceneByIndex(std::size_t Index);" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.h" Overwrite="false" Encoding="UTF-8" Lines="bool TryGetSceneIdByName(std::string_view SceneName, eList&amp; OutSceneId);" />
+
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="true" Encoding="UTF-8" Lines="/**********************************************************" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="* @author      : mattya3713." />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="* @date        : yyyy/mm/dd." />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="* @brief       : シーンレジストリ自動生成ソース." />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="**********************************************************/" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="#include &quot;SceneRegistry.generated.h&quot;" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="#include &quot;Game/00_Scene/00_Base/SceneBase.h&quot;" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="@(SceneHeader->'#include &quot;Game/00_Scene/%(RecursiveDir)%(Filename).h&quot;')" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="namespace" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="{" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="    constexpr eList SCENE_LIST[] =" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="    {" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="@(SceneHeader->'        eList::%(Filename),')" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="    };" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="}" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="std::unique_ptr&lt;SceneBase&gt; CreateSceneById(eList SceneId)" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="{" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="    switch (SceneId)" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="    {" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="@(SceneHeader->'    case eList::%(Filename):')" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="@(SceneHeader->'        return std::make_unique&lt;%(Filename)&gt;();')" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="    case eList::MAX:" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="    default:" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="        return nullptr;" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="    }" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="}" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="const char* GetSceneName(eList SceneId)" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="{" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="    switch (SceneId)" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="    {" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="@(SceneHeader->'    case eList::%(Filename):')" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="@(SceneHeader->'        return &quot;%(Filename)&quot;;')" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="    case eList::MAX:" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="    default:" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="        return &quot;Unknown&quot;;" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="    }" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="}" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="std::size_t GetSceneCount()" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="{" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="    return sizeof(SCENE_LIST) / sizeof(SCENE_LIST[0]);" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="}" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="eList GetSceneByIndex(std::size_t Index)" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="{" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="    const std::size_t scene_count = GetSceneCount();" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="    if (Index &gt;= scene_count)" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="    {" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="        return eList::MAX;" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="    }" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="    return SCENE_LIST[Index];" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="}" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="bool TryGetSceneIdByName(std::string_view SceneName, eList&amp; OutSceneId)" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="{" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="    const std::size_t scene_count = GetSceneCount();" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="    for (std::size_t index = 0; index &lt; scene_count; ++index)" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="    {" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="        const eList scene_id = GetSceneByIndex(index);" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="        if (SceneName == GetSceneName(scene_id))" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="        {" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="            OutSceneId = scene_id;" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="            return true;" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="        }" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="    }" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="    OutSceneId = eList::MAX;" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="    return false;" />
+    <WriteLinesToFile File="$(ProjectDir)SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.cpp" Overwrite="false" Encoding="UTF-8" Lines="}" />
+  </Target>
+</Project>

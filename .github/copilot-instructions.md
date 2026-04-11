@@ -23,3 +23,6 @@
 - Constants (.cpp): `ALL_CAPS` (e.g., `MAX_COUNT`)
 - Global: `g_PascalCase` (e.g., `g_Instance`)
 - **NEVER use `using namespace` (including `DirectX`)** - Always explicitly use `DirectX::` for clarity.
+
+## Language Preference
+- User prefers responses in Japanese。

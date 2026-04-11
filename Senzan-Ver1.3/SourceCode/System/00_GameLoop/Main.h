@@ -3,6 +3,7 @@
 //クラスの前方宣言.
 class DirectX12;
 class Time;
+class SceneManager;
 
 class Loader;
 class Input;
@@ -45,7 +46,8 @@ private:
 
 private:
 	HWND			m_hWnd;	 // ウィンドウハンドル.
-	std::unique_ptr<Loader>			m_pResourceLoader;
+  std::unique_ptr<DirectX12> m_upDirectX12;
+//	std::unique_ptr<Loader>			m_pResourceLoader;
 	
 	// ゲームを終了するためのデバッグフラグ.
 	float m_LastEscPressTime = 0.0f; // 前回Escが押されたゲーム内時刻.
