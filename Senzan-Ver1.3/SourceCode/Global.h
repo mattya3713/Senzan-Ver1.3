@@ -1,15 +1,15 @@
 #pragma once
 
 #include "Constant.h"								// このゲームの定数.	
-#include "Game/GameLoop/Time/Time.h"				// このゲームの時間軸.
+#include "Game/00_GameLoop/Time/Time.h"			// このゲームの時間軸.
 
-#include "System/Utility/Assert/Assert.inl"			// HRESULTのtrycatchをする.
-#include "System/Utility/Math/Math.h"				// 算数系.	
-#include "System/Utility/ComPtr/ComPtr.h"			// Microsoft::WRL::ComPtrのようなもの.	
-#include "System/Utility/CustomSTL/pair/Pair.h"		// 添え字が使えるpair.	
-#include "Utility/EnumFlags/EnumFlags.h"			// Enumのビット演算子オーバーロード.
-#include "System/Utility/Transform/Transform.h"		// Transform.	
-#include "System/Singleton/SingletonTemplate.h"		// シングルトンテンプレト.	
+#include "Engine/Utility/Assert/Assert.inl"			// HRESULTのtrycatchをする.
+#include "Engine/Utility/Math/Math.h"				// 算数系.	
+#include "Engine/Utility/ComPtr/ComPtr.h"			// Microsoft::WRL::ComPtrのようなもの.	
+#include "Engine/Utility/CustomSTL/pair/Pair.h"		// 添え字が使えるpair.	
+#include "Engine/Utility/EnumFlags/EnumFlags.h"		// Enumのビット演算子オーバーロード.
+#include "Engine/Utility/Transform/Transform.h"		// Transform.	
+#include "Engine/Utility/SingletonTemplate/SingletonTemplate.h"	// シングルトンテンプレト.	
 
 // MEMO : Windows ヘッダの min/max マクロを無効化.
 #ifndef NOMINMAX

@@ -26,3 +26,14 @@
 
 ## Language Preference
 - User prefers responses in Japanese。
+
+## クラスヘッダコメント規則（追加）
+- このアカウント利用時、クラスのヘッダコメント `@author` は `mattya3713.` を使用する。
+- `@date` は固定値ではなく、作業当日の日付（`YYYY/MM/DD`）を記載する。
+- デザインパターンを使うクラスは、`@date` の次行に `@pattern : <PatternName>.` を記載する。
+- 提示済みのコメント規則・Set/Get規約・author/date/pattern規則は UIObject だけでなく全ファイル共通ルールとして適用する。
+
+## Set/Get 規約
+- コメントは `// <項目>の取得/設定.` 形式。
+- 16byte以下は値渡し、16byte超過は `const T&`。
+- getterは `const noexcept` を付ける。

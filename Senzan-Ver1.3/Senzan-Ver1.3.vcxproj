@@ -79,7 +79,7 @@
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir)SourceCode;$(ProjectDir)SourceCode\System;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)SourceCode;$(ProjectDir)SourceCode\\Engine;$(ProjectDir)SourceCode\\Engine\\System;$(ProjectDir)SourceCode\\Engine\\Resource;$(ProjectDir)SourceCode\\Engine\\Graphic;$(ProjectDir)SourceCode\Game;$(ProjectDir)SourceCode\\Engine\\System\\99_Utility;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
@@ -100,7 +100,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir)SourceCode;$(ProjectDir)SourceCode\System;$(ProjectDir)SourceCode\Resoure;$(ProjectDir)SourceCode\Graphic;$(ProjectDir)SourceCode\Game;$(ProjectDir)SourceCode\System\99_Utility;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)SourceCode;$(ProjectDir)SourceCode\\Engine;$(ProjectDir)SourceCode\\Engine\\System;$(ProjectDir)SourceCode\\Engine\\Resource;$(ProjectDir)SourceCode\\Engine\\Graphic;$(ProjectDir)SourceCode\Game;$(ProjectDir)SourceCode\\Engine\\System\\99_Utility;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
@@ -119,7 +119,7 @@
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir)SourceCode;$(ProjectDir)SourceCode\System;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)SourceCode;$(ProjectDir)SourceCode\\Engine;$(ProjectDir)SourceCode\\Engine\\System;$(ProjectDir)SourceCode\\Engine\\Resource;$(ProjectDir)SourceCode\\Engine\\Graphic;$(ProjectDir)SourceCode\Game;$(ProjectDir)SourceCode\\Engine\\System\\99_Utility;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
@@ -140,7 +140,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir)SourceCode;$(ProjectDir)SourceCode\System;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)SourceCode;$(ProjectDir)SourceCode\\Engine;$(ProjectDir)SourceCode\\Engine\\System;$(ProjectDir)SourceCode\\Engine\\Resource;$(ProjectDir)SourceCode\\Engine\\Graphic;$(ProjectDir)SourceCode\Game;$(ProjectDir)SourceCode\\Engine\\System\\99_Utility;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
@@ -157,14 +157,13 @@
   <ItemGroup>
     <None Include="Data\Shader\Dbg\README.md" />
     <None Include="Doc\CODING_STYLE.md" />
-    <None Include="SourceCode\Graphic\Shader\DebugDraw.hlsl" />
-    <None Include="SourceCode\Graphic\Shader\Skinning.hlsl" />
-    <None Include="SourceCode\System\10_Singleton\01_SceneManager\SceneRegistry.Generate.targets" />
-    <None Include="SourceCode\System\10_Singleton\SceneManager\SceneRegistry.Generate.targets" />
-    <None Include="SourceCode\System\99_Utility\Assert\Assert.inl" />
-    <None Include="SourceCode\System\99_Utility\Math\Easing\Easing.inl" />
-    <None Include="SourceCode\System\99_Utility\Math\Math.inl" />
-    <None Include="SourceCode\System\99_Utility\String\FilePath\FilePath.inl" />
+    <None Include="SourceCode\\Engine\\Graphic\\Shader\DebugDraw.hlsl" />
+    <None Include="SourceCode\\Engine\\Graphic\\Shader\Skinning.hlsl" />
+    <None Include="SourceCode\Game\00_GameLoop\Scene\SceneRegistry.Generate.targets" />
+    <None Include="SourceCode\Engine\Utility\Assert\Assert.inl" />
+    <None Include="SourceCode\Engine\Utility\Math\Easing\Easing.inl" />
+    <None Include="SourceCode\Engine\Utility\Math\Math.inl" />
+    <None Include="SourceCode\Engine\Utility\String\FilePath\FilePath.inl" />
     <None Include="Tools\GenerateSceneRegistry.ps1" />
   </ItemGroup>
   <ItemGroup>
@@ -172,96 +171,94 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SourceCode\Constant.h" />
-    <ClInclude Include="SourceCode\Game\00_Scene\00_Base\SceneBase.h" />
-    <ClInclude Include="SourceCode\Game\00_Scene\01_Title\Title.h" />
-    <ClInclude Include="SourceCode\Game\00_Scene\02_GameMain\GameMain.h" />
-    <ClInclude Include="SourceCode\Game\00_Scene\Ex_Test\00_mattya3713\MattyaTestScene.h" />
-    <ClInclude Include="SourceCode\Game\01_GameObject\02_UIObject\UIObject.h" />
-    <ClInclude Include="SourceCode\Game\01_GameObject\GameObject.h" />
-    <ClInclude Include="SourceCode\Game\04_InputDevice\Input.h" />
-    <ClInclude Include="SourceCode\Game\04_InputDevice\KeyInput\KeyInput.h" />
-    <ClInclude Include="SourceCode\Game\04_InputDevice\Mouse\Mouse.h" />
-    <ClInclude Include="SourceCode\Game\04_InputDevice\VirtualPad.h" />
-    <ClInclude Include="SourceCode\Game\04_InputDevice\XInput\XInput.h" />
-    <ClInclude Include="SourceCode\Graphic\Fade\Fade.h" />
-    <ClInclude Include="SourceCode\Resource\Effect\EffectResource.h" />
-    <ClInclude Include="SourceCode\Resource\Mesh\00_Sprite\WorldSprite\WorldSprite.h" />
-    <ClInclude Include="SourceCode\Resource\Mesh\00_Sprite\UISprite\UISprite.h" />
-    <ClInclude Include="SourceCode\Resource\Mesh\MeshBase.h" />
-    <ClInclude Include="SourceCode\Resource\Sound\DirectSound.h" />
-    <ClInclude Include="SourceCode\System\00_GameLoop\Loader.h" />
-    <ClInclude Include="SourceCode\System\00_GameLoop\Main.h" />
-    <ClInclude Include="SourceCode\System\00_GameLoop\Time\Time.h" />
+    <ClInclude Include="SourceCode\Game\01_Scene\00_Base\SceneBase.h" />
+    <ClInclude Include="SourceCode\Game\01_Scene\01_Title\Title.h" />
+    <ClInclude Include="SourceCode\Game\01_Scene\02_GameMain\GameMain.h" />
+    <ClInclude Include="SourceCode\Game\01_Scene\Ex_Test\00_mattya3713\MattyaTestScene.h" />
+    <ClInclude Include="SourceCode\Game\02_GameObject\02_UIObject\UIObject.h" />
+    <ClInclude Include="SourceCode\Game\02_GameObject\GameObject.h" />
+    <ClInclude Include="SourceCode\Game\05_InputDevice\Input.h" />
+    <ClInclude Include="SourceCode\Game\05_InputDevice\KeyInput\KeyInput.h" />
+    <ClInclude Include="SourceCode\Game\05_InputDevice\Mouse\Mouse.h" />
+    <ClInclude Include="SourceCode\Game\05_InputDevice\VirtualPad.h" />
+    <ClInclude Include="SourceCode\Game\05_InputDevice\XInput\XInput.h" />
+    <ClInclude Include="SourceCode\\Engine\\Graphic\\Fade\Fade.h" />
+    <ClInclude Include="SourceCode\\Engine\\Resource\\Effect\EffectResource.h" />
+    <ClInclude Include="SourceCode\\Engine\\Resource\\Mesh\00_Sprite\WorldSprite\WorldSprite.h" />
+    <ClInclude Include="SourceCode\\Engine\\Resource\\Mesh\00_Sprite\UISprite\UISprite.h" />
+    <ClInclude Include="SourceCode\\Engine\\Resource\\Mesh\MeshBase.h" />
+    <ClInclude Include="SourceCode\\Engine\\Resource\\Sound\DirectSound.h" />
+    <ClInclude Include="SourceCode\Game\00_GameLoop\Loader.h" />
+    <ClInclude Include="SourceCode\Game\00_GameLoop\Main.h" />
+    <ClInclude Include="SourceCode\Game\00_GameLoop\Time\Time.h" />
     <ClInclude Include="SourceCode\Global.h" />
-    <ClInclude Include="SourceCode\Graphic\DirectX\DirectX12\DirectX12.h" />
-    <ClInclude Include="SourceCode\Resource\Mesh\FBX\FBXModel.h" />
+    <ClInclude Include="SourceCode\\Engine\\Graphic\\DirectX\DirectX12\DirectX12.h" />
+    <ClInclude Include="SourceCode\Engine\Resource\Mesh\01_FBX\FBXModel.h" />
     <ClInclude Include="SourceCode\MyMacro.h" />
     <ClInclude Include="SourceCode\pch.h" />
-    <ClInclude Include="SourceCode\Resource\Mesh\FBX\FBXMesh.h" />
-    <ClInclude Include="SourceCode\System\10_Singleton\00_FadeManager\FadeManager.h" />
-    <ClInclude Include="SourceCode\System\10_Singleton\01_SceneManager\SceneManager.h" />
-    <ClInclude Include="SourceCode\System\10_Singleton\01_SceneManager\SceneRegistry.generated.h" />
-    <ClInclude Include="SourceCode\System\10_Singleton\SceneManager\SceneManager.h" />
-    <ClInclude Include="SourceCode\System\10_Singleton\SceneManager\SceneRegistry.generated.h" />
-    <ClInclude Include="SourceCode\System\10_Singleton\SingletonTemplate.h" />
-    <ClInclude Include="SourceCode\System\10_Singleton\UIObjectManager\UIObjectManager.h" />
-    <ClInclude Include="SourceCode\System\99_Utility\Buffer\Any.h" />
-    <ClInclude Include="SourceCode\System\99_Utility\Buffer\Buffer.h" />
-    <ClInclude Include="SourceCode\System\99_Utility\Color\Color.h" />
-    <ClInclude Include="SourceCode\System\99_Utility\ComPtr\ComPtr.h" />
-    <ClInclude Include="SourceCode\System\99_Utility\EnumFlags\EnumFlags.h" />
-    <ClInclude Include="SourceCode\System\99_Utility\FileManager\FileManager.h" />
-    <ClInclude Include="SourceCode\System\99_Utility\Hash\CHash.h" />
-    <ClInclude Include="SourceCode\System\99_Utility\Hash\Crc32Table\HashTable.h" />
-    <ClInclude Include="SourceCode\System\99_Utility\Math\Easing\Easing.h" />
-    <ClInclude Include="SourceCode\System\99_Utility\Math\Math.h" />
-    <ClInclude Include="SourceCode\System\99_Utility\Math\Random\Random.h" />
-    <ClInclude Include="SourceCode\System\99_Utility\SingleTrigger\SingleTrigger.h" />
-    <ClInclude Include="SourceCode\System\99_Utility\StateMachine\StateBase.h" />
-    <ClInclude Include="SourceCode\System\99_Utility\StateMachine\StateMachine.h" />
-    <ClInclude Include="SourceCode\System\99_Utility\String\FilePath\FilePath.h" />
-    <ClInclude Include="SourceCode\System\99_Utility\String\String.h" />
-    <ClInclude Include="SourceCode\System\99_Utility\Transform\RectTransform.h" />
-    <ClInclude Include="SourceCode\System\99_Utility\Transform\Transform.h" />
+    <ClInclude Include="SourceCode\Engine\Resource\Mesh\01_FBX\FBXMesh.h" />
+    <ClInclude Include="SourceCode\Engine\Graphic\Fade\FadeManager.h" />
+    <ClInclude Include="SourceCode\Game\00_GameLoop\Scene\SceneManager.h" />
+    <ClInclude Include="SourceCode\Game\00_GameLoop\Scene\SceneRegistry.generated.h" />
+    <ClInclude Include="SourceCode\Engine\Utility\SingletonTemplate\SingletonTemplate.h" />
+    <ClInclude Include="SourceCode\\Engine\\System\\10_Singleton\UIObjectManager\UIObjectManager.h" />
+    <ClInclude Include="SourceCode\Engine\Utility\Buffer\Any.h" />
+    <ClInclude Include="SourceCode\Engine\Utility\Buffer\Buffer.h" />
+    <ClInclude Include="SourceCode\Engine\Utility\Color\Color.h" />
+    <ClInclude Include="SourceCode\Engine\Utility\ComPtr\ComPtr.h" />
+    <ClInclude Include="SourceCode\Engine\Utility\EnumFlags\EnumFlags.h" />
+    <ClInclude Include="SourceCode\Engine\Utility\FileManager\FileManager.h" />
+    <ClInclude Include="SourceCode\Engine\Utility\Hash\CHash.h" />
+    <ClInclude Include="SourceCode\Engine\Utility\Hash\Crc32Table\HashTable.h" />
+    <ClInclude Include="SourceCode\Engine\Utility\Math\Easing\Easing.h" />
+    <ClInclude Include="SourceCode\Engine\Utility\Math\Math.h" />
+    <ClInclude Include="SourceCode\Engine\Utility\Math\Random\Random.h" />
+    <ClInclude Include="SourceCode\Engine\Utility\SingleTrigger\SingleTrigger.h" />
+    <ClInclude Include="SourceCode\Engine\Utility\StateMachine\StateBase.h" />
+    <ClInclude Include="SourceCode\Engine\Utility\StateMachine\StateMachine.h" />
+    <ClInclude Include="SourceCode\Engine\Utility\String\FilePath\FilePath.h" />
+    <ClInclude Include="SourceCode\Engine\Utility\String\String.h" />
+    <ClInclude Include="SourceCode\Engine\Utility\Transform\RectTransform.h" />
+    <ClInclude Include="SourceCode\Engine\Utility\Transform\Transform.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="SourceCode\Game\00_Scene\00_Base\SceneBase.cpp" />
-    <ClCompile Include="SourceCode\Game\00_Scene\01_Title\Title.cpp" />
-    <ClCompile Include="SourceCode\Game\00_Scene\02_GameMain\GameMain.cpp" />
-    <ClCompile Include="SourceCode\Game\00_Scene\Ex_Test\00_mattya3713\MattyaTestScene.cpp" />
-    <ClCompile Include="SourceCode\Game\01_GameObject\02_UIObject\UIObject.cpp" />
-    <ClCompile Include="SourceCode\Game\01_GameObject\GameObject.cpp" />
-    <ClCompile Include="SourceCode\Game\04_InputDevice\Input.cpp" />
-    <ClCompile Include="SourceCode\Game\04_InputDevice\KeyInput\KeyInput.cpp" />
-    <ClCompile Include="SourceCode\Game\04_InputDevice\Mouse\Mouse.cpp" />
-    <ClCompile Include="SourceCode\Game\04_InputDevice\VirtualPad.cpp" />
-    <ClCompile Include="SourceCode\Game\04_InputDevice\XInput\XInput.cpp" />
-    <ClCompile Include="SourceCode\Graphic\Fade\Fade.cpp" />
-    <ClCompile Include="SourceCode\Resource\Effect\EffectResource.cpp" />
-    <ClCompile Include="SourceCode\Resource\Mesh\00_Sprite\WorldSprite\WorldSprite.cpp" />
-    <ClCompile Include="SourceCode\Resource\Mesh\00_Sprite\UISprite\UISprite.cpp" />
-    <ClCompile Include="SourceCode\Resource\Mesh\MeshBase.cpp" />
-    <ClCompile Include="SourceCode\Resource\Sound\DirectSound.cpp" />
-    <ClCompile Include="SourceCode\System\00_GameLoop\Loader.cpp" />
-    <ClCompile Include="SourceCode\System\00_GameLoop\Main.cpp" />
-    <ClCompile Include="SourceCode\System\00_GameLoop\Time\Time.cpp" />
-    <ClCompile Include="SourceCode\Graphic\DirectX\DirectX12\DirectX12.cpp" />
-    <ClCompile Include="SourceCode\Resource\Mesh\FBX\FBXMesh.cpp" />
-    <ClCompile Include="SourceCode\Resource\Mesh\FBX\FBXModel.cpp" />
+    <ClCompile Include="SourceCode\Game\01_Scene\00_Base\SceneBase.cpp" />
+    <ClCompile Include="SourceCode\Game\01_Scene\01_Title\Title.cpp" />
+    <ClCompile Include="SourceCode\Game\01_Scene\02_GameMain\GameMain.cpp" />
+    <ClCompile Include="SourceCode\Game\01_Scene\Ex_Test\00_mattya3713\MattyaTestScene.cpp" />
+    <ClCompile Include="SourceCode\Game\02_GameObject\02_UIObject\UIObject.cpp" />
+    <ClCompile Include="SourceCode\Game\02_GameObject\GameObject.cpp" />
+    <ClCompile Include="SourceCode\Game\05_InputDevice\Input.cpp" />
+    <ClCompile Include="SourceCode\Game\05_InputDevice\KeyInput\KeyInput.cpp" />
+    <ClCompile Include="SourceCode\Game\05_InputDevice\Mouse\Mouse.cpp" />
+    <ClCompile Include="SourceCode\Game\05_InputDevice\VirtualPad.cpp" />
+    <ClCompile Include="SourceCode\Game\05_InputDevice\XInput\XInput.cpp" />
+    <ClCompile Include="SourceCode\\Engine\\Graphic\\Fade\Fade.cpp" />
+    <ClCompile Include="SourceCode\\Engine\\Resource\\Effect\EffectResource.cpp" />
+    <ClCompile Include="SourceCode\\Engine\\Resource\\Mesh\00_Sprite\WorldSprite\WorldSprite.cpp" />
+    <ClCompile Include="SourceCode\\Engine\\Resource\\Mesh\00_Sprite\UISprite\UISprite.cpp" />
+    <ClCompile Include="SourceCode\\Engine\\Resource\\Mesh\MeshBase.cpp" />
+    <ClCompile Include="SourceCode\\Engine\\Resource\\Sound\DirectSound.cpp" />
+    <ClCompile Include="SourceCode\Game\00_GameLoop\Loader.cpp" />
+    <ClCompile Include="SourceCode\Game\00_GameLoop\Main.cpp" />
+    <ClCompile Include="SourceCode\Game\00_GameLoop\Time\Time.cpp" />
+    <ClCompile Include="SourceCode\\Engine\\Graphic\\DirectX\DirectX12\DirectX12.cpp" />
+    <ClCompile Include="SourceCode\Engine\Resource\Mesh\01_FBX\FBXMesh.cpp" />
+    <ClCompile Include="SourceCode\Engine\Resource\Mesh\01_FBX\FBXModel.cpp" />
     <ClCompile Include="SourceCode\pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="SourceCode\System\00_GameLoop\WinMain.cpp" />
-    <ClCompile Include="SourceCode\System\10_Singleton\00_FadeManager\FadeManager.cpp" />
-    <ClCompile Include="SourceCode\System\10_Singleton\01_SceneManager\SceneManager.cpp" />
-    <ClCompile Include="SourceCode\System\10_Singleton\01_SceneManager\SceneRegistry.generated.cpp" />
-    <ClCompile Include="SourceCode\System\10_Singleton\11_UIObjectManager\UIObjectManager.cpp" />
-    <ClCompile Include="SourceCode\System\99_Utility\Buffer\Buffer.cpp" />
-    <ClCompile Include="SourceCode\System\99_Utility\FileManager\FileManager.cpp" />
-    <ClCompile Include="SourceCode\System\99_Utility\Hash\Crc32Table\HashTable.cpp" />
-    <ClCompile Include="SourceCode\System\99_Utility\String\String.cpp" />
-    <ClCompile Include="SourceCode\System\99_Utility\Transform\RectTransform.cpp" />
-    <ClCompile Include="SourceCode\System\99_Utility\Transform\Transform.cpp" />
+    <ClCompile Include="SourceCode\Game\00_GameLoop\WinMain.cpp" />
+    <ClCompile Include="SourceCode\Engine\Graphic\Fade\FadeManager.cpp" />
+    <ClCompile Include="SourceCode\Game\00_GameLoop\Scene\SceneManager.cpp" />
+    <ClCompile Include="SourceCode\Game\00_GameLoop\Scene\SceneRegistry.generated.cpp" />
+    <ClCompile Include="SourceCode\Engine\Resource\Mesh\00_Sprite\UIObjectManager.cpp" />
+    <ClCompile Include="SourceCode\Engine\Utility\Buffer\Buffer.cpp" />
+    <ClCompile Include="SourceCode\Engine\Utility\FileManager\FileManager.cpp" />
+    <ClCompile Include="SourceCode\Engine\Utility\Hash\Crc32Table\HashTable.cpp" />
+    <ClCompile Include="SourceCode\Engine\Utility\String\String.cpp" />
+    <ClCompile Include="SourceCode\Engine\Utility\Transform\RectTransform.cpp" />
+    <ClCompile Include="SourceCode\Engine\Utility\Transform\Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Data\Shader\Dbg\DebugDraw.hlsl">
@@ -286,4 +283,3 @@
     <Error Condition="!Exists('..\packages\AssimpCpp.5.0.1.6\build\native\AssimpCpp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\AssimpCpp.5.0.1.6\build\native\AssimpCpp.targets'))" />
   </Target>
 </Project>
-

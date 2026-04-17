@@ -8,8 +8,9 @@
 
 ```h
 /**********************************************************
-* @author      : 淵脇未来.
-* @date        : 2025/03/17.
+* @author      : mattya3713.
+* @date        : {その日の日付}.
+* @pattern	   : {パターン名} <- あれば記入内ならこの行は飛ばす
 * @brief       : デバッグ描画クラス.
 *              : レイやボーンをラインで表示する.
 **********************************************************/
@@ -32,10 +33,8 @@
 void Update();
 
 ■ Set / Get
-// Speedの取得.
-float GetSpeed() const noexcept;
-
 // Speedの設定.
+float GetSpeed() const noexcept;
 void SetSpeed(float Speed);
 16byte以下の型
 inline void SetSpeed(float Speed) { m_Speed = Speed; }
