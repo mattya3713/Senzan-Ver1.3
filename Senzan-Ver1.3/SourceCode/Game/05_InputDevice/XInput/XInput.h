@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 #include <Xinput.h>
 
 #pragma comment(lib,"xinput.lib")

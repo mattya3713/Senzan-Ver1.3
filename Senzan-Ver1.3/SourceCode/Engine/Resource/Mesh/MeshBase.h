@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 #include "FBXMesh.h"
 #include <d3d12.h>

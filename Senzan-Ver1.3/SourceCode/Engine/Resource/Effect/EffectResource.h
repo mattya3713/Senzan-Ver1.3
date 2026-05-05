@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 #include "Engine/Utility/SingletonTemplate/SingletonTemplate.h" 
 #include "../../../Data/Library/Effekseer/include/Effekseer.h"
 #include <unordered_map>

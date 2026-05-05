@@ -1,4 +1,4 @@
-﻿#include "RectTransform.h"
+#include "RectTransform.h"
 
 RectTransform::RectTransform()
     : m_spTransform   ()

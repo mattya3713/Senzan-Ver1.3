@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 #define CRC32_TABLE_SIZE (256) // CRC32テーブルの要素数.
 #define USE_CREATE_CRC32_TABLE_FUNCTION (0) // 1: CRC32テーブル作成関数を使用する。 0: 使用しない。.

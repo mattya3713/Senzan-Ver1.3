@@ -1,4 +1,4 @@
-﻿// Buffer.h シーンをまたいでinstanceを呼び出したいときに使用.
+// Buffer.h シーンをまたいでinstanceを呼び出したいときに使用.
 
 #pragma once
 

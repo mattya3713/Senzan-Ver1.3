@@ -1,4 +1,4 @@
-﻿#include "WorldSprite.h"
+#include "WorldSprite.h"
 #include "Graphic/DirectX/DirectX12/DirectX12.h"
 #include "Engine/Utility/Assert/Assert.inl"
 #include "MyMacro.h"

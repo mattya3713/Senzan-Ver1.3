@@ -1,4 +1,4 @@
-﻿#include "DirectSound.h"
+#include "DirectSound.h"
 
 DirectSound::DirectSound()
     : m_lpSoundBuffer(nullptr)

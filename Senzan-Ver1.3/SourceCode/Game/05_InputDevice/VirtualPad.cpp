@@ -1,4 +1,4 @@
-﻿#include "VirtualPad.h"
+#include "VirtualPad.h"
 #include <iostream> 
 #include <cmath> // std::sqrt, std::min, std::max に必要.
 

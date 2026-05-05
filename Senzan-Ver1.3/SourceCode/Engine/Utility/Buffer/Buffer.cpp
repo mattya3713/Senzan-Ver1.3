@@ -1,4 +1,4 @@
-﻿
+
 #include "Buffer.h"
 
 // バッファを追加.

@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 #include "Engine/Utility/SingletonTemplate/SingletonTemplate.h"
 #include "Engine/Graphic/Fade/Fade.h"
 

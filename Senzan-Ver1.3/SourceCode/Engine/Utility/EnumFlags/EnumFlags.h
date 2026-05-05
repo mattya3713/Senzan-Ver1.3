@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 #include <type_traits> // std::underlying_type_t, std::enable_if_t, std::true_type, std::false_type.
 #include <cstdint>     // 標準の整数型.
 

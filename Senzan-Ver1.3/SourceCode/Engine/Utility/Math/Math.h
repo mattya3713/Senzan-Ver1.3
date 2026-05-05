@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 #include "Constant.h"
 #include <cmath>
 #include <DirectXMath.h>

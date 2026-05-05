@@ -1,4 +1,4 @@
-﻿#include "FileManager.h"
+#include "FileManager.h"
 #include <shlobj.h>
 
 const std::filesystem::path FileManager::GetSelectFolderPath()

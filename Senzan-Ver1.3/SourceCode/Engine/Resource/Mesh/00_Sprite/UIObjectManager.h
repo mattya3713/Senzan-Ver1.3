@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 //隴ｦ蜻翫↓縺､縺・※縺ｮ繧ｳ繝ｼ繝牙・譫舌ｒ辟｡蜉ｹ縺ｫ縺吶ｋ.4005:蜀榊ｮ夂ｾｩ.
 #pragma warning(disable:4005)

@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 #include "Utility\\Hash\\Crc32Table\\HashTable.h"  // Hashテーブル.
 
 #define ENABLE_HASH_DEBUG (0) // 1: Hashのデバッグ機能を有効.

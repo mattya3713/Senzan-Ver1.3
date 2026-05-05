@@ -1,4 +1,4 @@
-﻿#include "XInput.h"
+#include "XInput.h"
 
 namespace
 {
