@@ -20,11 +20,12 @@
 各行末尾は必ず .
 
 ■ 関数（引数複数 / 公開関数）
-/**
+
+/****************************************
 * @brief 更新処理.
 * @param DeltaTime 経過時間.
 * @return 成功したかどうか.
-*/
+****************************************/
 使用タグ: @brief, @param, @return
 各説明末尾は必ず .
 
@@ -33,7 +34,7 @@
 void Update();
 
 ■ Set / Get
-// Speedの設定.
+// Speedの取得/設定.
 float GetSpeed() const noexcept;
 void SetSpeed(float Speed);
 16byte以下の型

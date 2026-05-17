@@ -12,7 +12,7 @@ namespace
 	constexpr TCHAR PS_FILE_PATH[] = _T("Data\\Shader\\Sprite2D\\Sprite2DPS.hlsl");
 }
 
-Sprite2D::Sprite2D()
+UISprite::UISprite()
 	: m_pDx12(nullptr)
 	, m_pDevice12(nullptr)
 	, m_pCmdList12(nullptr)
@@ -28,7 +28,7 @@ Sprite2D::Sprite2D()
 {
 }
 
-Sprite2D::~Sprite2D()
+UISprite::~UISprite()
 {
 	SAFE_RELEASE(m_pSampleLinear);
 	SAFE_RELEASE(m_pTexture);
@@ -41,7 +41,7 @@ Sprite2D::~Sprite2D()
 	SAFE_RELEASE(m_pConstantBuffer);
 }
 
-bool Sprite2D::Initialize(const std::filesystem::path& FilePath)
+bool UISprite::Initialize(const std::filesystem::path& FilePath)
 {
 	UNREFERENCED_PARAMETER(VS_FILE_PATH);
 	UNREFERENCED_PARAMETER(PS_FILE_PATH);
@@ -57,44 +57,44 @@ bool Sprite2D::Initialize(const std::filesystem::path& FilePath)
 	return true;
 }
 
-void Sprite2D::Render()
+void UISprite::Render()
 {
 	CalcWorldMatrix();
 
 	// TODO : DirectX12 の UI 描画パス（PSO/RootSignature/DescriptorHeap）に接続する.
 }
 
-const std::unique_ptr<RectTransform>& Sprite2D::GetRectTransform() const
+const std::unique_ptr<RectTransform>& UISprite::GetRectTransform() const
 {
 	return m_pRectTransform;
 }
 
-void Sprite2D::SetDrawSize(const DirectX::XMFLOAT2& DrawSize)
+void UISprite::SetDrawSize(const DirectX::XMFLOAT2& DrawSize)
 {
 	m_DrawSize = DrawSize;
 }
 
-void Sprite2D::SetColor(const DirectX::XMFLOAT4& Color)
+void UISprite::SetColor(const DirectX::XMFLOAT4& Color)
 {
 	m_Color = Color;
 }
 
-const std::string& Sprite2D::GetResourceName() const
+const std::string& UISprite::GetResourceName() const
 {
 	return m_ResourceName;
 }
 
-void Sprite2D::SetResourceName(const std::string& Name)
+void UISprite::SetResourceName(const std::string& Name)
 {
 	m_ResourceName = Name;
 }
 
-ID3D12Resource* Sprite2D::GetTexture()
+ID3D12Resource* UISprite::GetTexture()
 {
 	return m_pTexture;
 }
 
-void Sprite2D::LoadImageSize(const std::filesystem::path& FilePath)
+void UISprite::LoadImageSize(const std::filesystem::path& FilePath)
 {
 	std::ifstream file_stream(FilePath, std::ios::binary);
 	if (!file_stream.is_open())
@@ -122,12 +122,12 @@ void Sprite2D::LoadImageSize(const std::filesystem::path& FilePath)
 	m_DrawSize = { width, height };
 }
 
-void Sprite2D::CreateShader()
+void UISprite::CreateShader()
 {
 	// TODO : DirectX12 の PSO/RootSignature 生成へ置き換える.
 }
 
-HRESULT Sprite2D::CreateModel()
+HRESULT UISprite::CreateModel()
 {
 	if (m_pDevice12 == nullptr)
 	{
@@ -193,20 +193,20 @@ HRESULT Sprite2D::CreateModel()
 	return S_OK;
 }
 
-HRESULT Sprite2D::CreateTexture(const std::wstring& FilePath)
+HRESULT UISprite::CreateTexture(const std::wstring& FilePath)
 {
 	UNREFERENCED_PARAMETER(FilePath);
 	// TODO : DirectX12 のテクスチャロード + SRV 作成へ置き換える.
 	return S_OK;
 }
 
-HRESULT Sprite2D::CreateSampler()
+HRESULT UISprite::CreateSampler()
 {
 	// TODO : DirectX12 の StaticSampler / Descriptor 経由へ置き換える.
 	return S_OK;
 }
 
-void Sprite2D::CalcWorldMatrix()
+void UISprite::CalcWorldMatrix()
 {
 	const Transform& transform = m_pRectTransform->GetTransform();
 
@@ -236,7 +236,7 @@ void Sprite2D::CalcWorldMatrix()
 	m_WorldMatrix = DirectX::XMMatrixMultiply(m_world_temp, m_trans);
 }
 
-ID3D12Resource* Sprite2D::GetUseVertexBuffer()
+ID3D12Resource* UISprite::GetUseVertexBuffer()
 {
 	const DirectX::XMFLOAT2& pivot = m_pRectTransform->GetPivot();
 

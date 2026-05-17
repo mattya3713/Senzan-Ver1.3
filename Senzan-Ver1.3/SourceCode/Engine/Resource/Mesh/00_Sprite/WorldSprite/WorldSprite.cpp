@@ -1,12 +1,11 @@
-﻿#include "WorldSprite.h"
+#include "WorldSprite.h"
 #include "Graphic/DirectX/DirectX12/DirectX12.h"
 #include "Engine/Utility/Assert/Assert.inl"
 #include "MyMacro.h"
 
-//繧ｷ繧ｧ繝ｼ繝繝輔ぃ繧､繝ｫ蜷搾ｼ医ョ繧｣繝ｬ繧ｯ繝医Μ繧ょ性繧・・
+// シェーダーファイル名（ディレクトリも含む）
 const TCHAR SHADER_NAME[] = _T("Data\\Shader\\Sprite3D.hlsl");
 
-//繧ｳ繝ｳ繧ｹ繝医Λ繧ｯ繧ｿ.
 WorldSprite::WorldSprite()
 	: m_pDx12(nullptr)
 	, m_pDevice12(nullptr)
@@ -26,14 +25,12 @@ WorldSprite::WorldSprite()
 {
 }
 
-//繝・せ繝医Λ繧ｯ繧ｿ.
 WorldSprite::~WorldSprite()
 {
 	Release();
 	m_pDx12 = nullptr;
 }
 
-//蛻晄悄蛹・
 HRESULT WorldSprite::Init(DirectX12& pDx12, LPCTSTR pFileName, SPRITE_STATE& pSs)
 {
 	m_pDx12 = &pDx12;
@@ -62,7 +59,7 @@ HRESULT WorldSprite::Init(DirectX12& pDx12, LPCTSTR pFileName, SPRITE_STATE& pSs
 	return S_OK;
 }
 
-//隗｣謾ｾ.
+// 解放
 void WorldSprite::Release()
 {
 	SAFE_RELEASE(m_pTexture);
@@ -73,17 +70,17 @@ void WorldSprite::Release()
 	m_pDevice12 = nullptr;
 }
 
-//===========================================================.
-//	HLSL繝輔ぃ繧､繝ｫ繧定ｪｭ縺ｿ霎ｼ縺ｿ繧ｷ繧ｧ繝ｼ繝繧剃ｽ懈・縺吶ｋ.
-//	HLSL: High Level Shading Language 縺ｮ逡･.
-//===========================================================.
+// ===========================================================
+// HLSLファイルを読み込みシェーダーを作成する
+// HLSL: High Level Shading Language の略
+// ===========================================================
 HRESULT WorldSprite::CreateShader()
 {
-	// TODO : DirectX12逕ｨ縺ｮPSO/RootSignature騾｣謳ｺ繧貞ｮ溯｣・☆繧・
+	// TODO : DirectX12用のPSO/RootSignature連携を完成させる
 	return S_OK;
 }
 
-//繝｢繝・Ν菴懈・.
+// モデル作成
 HRESULT WorldSprite::CreateModel()
 {
 	const float w = m_SpriteState.Disp.w / 2.0f;
@@ -136,22 +133,22 @@ HRESULT WorldSprite::CreateModel()
 	return S_OK;
 }
 
-//繝・け繧ｹ繝√Ε菴懈・.
+// テクスチャ作成
 HRESULT WorldSprite::CreateTexture(LPCTSTR pFileName)
 {
 	UNREFERENCED_PARAMETER(pFileName);
-	// TODO : DirectX12縺ｮSRV/DescriptorHeap邨檎罰縺ｮ繝・け繧ｹ繝√Ε逕滓・繧貞ｮ溯｣・☆繧・
+	// TODO : DirectX12のSRV/DescriptorHeap完成のテクスチャ取得を完成させる
 	return S_OK;
 }
 
-//繧ｵ繝ｳ繝励Λ菴懈・.
+// サンプラー作成
 HRESULT WorldSprite::CreateSampler()
 {
-	// TODO : DirectX12縺ｮStaticSampler/DescriptorHeap邨檎罰縺ｫ鄂ｮ縺肴鋤縺医ｋ.
+	// TODO : DirectX12のStaticSampler/DescriptorHeap完成に置き換える
 	return S_OK;
 }
 
-//繝ｬ繝ｳ繝繝ｪ繝ｳ繧ｰ逕ｨ.
+// レンダリング用
 void WorldSprite::Render()
 {
 	DirectX::XMMATRIX m_world;
@@ -171,12 +168,11 @@ void WorldSprite::Render()
 	DirectX::XMMATRIX m_world_temp = DirectX::XMMatrixMultiply(m_scale, m_rot);
 	m_world = DirectX::XMMatrixMultiply(m_world_temp, m_trans);
 
-    if (m_Billboard)
+	if (m_Billboard)
 	{
-		// TODO : CameraManager(DX12) 騾｣謳ｺ蠕後↓繝薙Ν繝懊・繝芽｡悟・縺ｸ鄂ｮ縺肴鋤縺医ｋ.
+		// TODO : CameraManager(DX12) 連携後にビルボード行列へ置き換える
 	}
 
 	UNREFERENCED_PARAMETER(m_world);
-	// TODO : DirectX12 縺ｮ繧ｳ繝槭Φ繝峨Μ繧ｹ繝医〒謠冗判縺吶ｋ螳溯｣・∈鄂ｮ縺肴鋤縺医ｋ.
+	// TODO : DirectX12 のコマンドリストで描画する実装へ置き換える
 }
-

@@ -50,7 +50,7 @@ void UIObject::Draw()
 }
 
 
-void UIObject::AttachSprite(const std::shared_ptr<Sprite2D>& Sprite)
+void UIObject::AttachSprite(const std::shared_ptr<UISprite>& Sprite)
 {
  if (Sprite == nullptr) { return; }
 
@@ -59,7 +59,7 @@ void UIObject::AttachSprite(const std::shared_ptr<Sprite2D>& Sprite)
 }
 
 
-std::shared_ptr<Sprite2D> UIObject::GetSprite()
+std::shared_ptr<UISprite> UIObject::GetSprite()
 {
     return m_pSprite.lock();
 }

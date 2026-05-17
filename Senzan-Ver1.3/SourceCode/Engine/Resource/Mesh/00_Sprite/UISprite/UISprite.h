@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 #include <filesystem>
 #include <unordered_map>
@@ -11,44 +11,44 @@
 
 class DirectX12;
 
-class Sprite2D
+class UISprite
 {
 public:
 
-	//鬆らせ縺ｮ讒矩菴・
+	// 頂点の構造体.
 	struct VERTEX
 	{
-		DirectX::XMFLOAT3 pos;	//鬆らせ蠎ｧ讓・
-		DirectX::XMFLOAT2 tex;	//繝・け繧ｹ繝√Ε蠎ｧ讓・
+		DirectX::XMFLOAT3 pos;	// 頂点座標.
+		DirectX::XMFLOAT2 tex;	// テクスチャ座標.
 	};
 
-	//蟷・ｫ倥＆讒矩菴・
+	// 幅・高さ構造体.
 	struct WHSIZE
 	{
 		float w;
 		float h;
 	};
 
-	//繧ｹ繝励Λ繧､繝域ｧ矩菴・
+	// スプライト状態構造体.
 	struct SPRITE_STATE
 	{
-		WHSIZE Disp;	//陦ｨ遉ｺ蟷・ｫ倥＆.
-		WHSIZE Base;	//蜈・判蜒丞ｹ・ｫ倥＆.
-		WHSIZE Stride;	//1繧ｳ繝槭≠縺溘ｊ縺ｮ蟷・ｫ倥＆.
+		WHSIZE Disp;	// 表示幅 / 高さ.
+		WHSIZE Base;	// 画像本体幅 / 高さ.
+		WHSIZE Stride;	// 1コマあたりの幅 / 高さ.
 	};
 
-	//繧ｳ繝ｳ繧ｹ繧ｿ繝ｳ繝医ヰ繝・ヵ繧｡縺ｮ繧｢繝励Μ蛛ｴ縺ｮ螳夂ｾｩ.
+	// コンスタントバッファのアプリ側の設定
 	struct SHADER_CONSTANT_BUFFER
 	{
-		ALIGN16	DirectX::XMMATRIX mWorld;		//繝ｯ繝ｼ繝ｫ繝芽｡悟・.
-		ALIGN16	DirectX::XMFLOAT4 vColor;		//繧ｫ繝ｩ繝ｼ・・GBA縺ｮ蝙九↓蜷医ｏ縺帙ｋ・・
-		ALIGN16	DirectX::XMFLOAT4 vUV;			//UV蠎ｧ讓呻ｼ・,y縺ｮ縺ｿ菴ｿ逕ｨ・・
-		ALIGN16	float fViewPortWidth;			//繝薙Η繝ｼ繝昴・繝亥ｹ・
-		ALIGN16	float fViewPortHeight;			//繝薙Η繝ｼ繝昴・繝磯ｫ倥＆.
-		ALIGN16	DirectX::XMFLOAT2 DawSize;	//謠冗判蟷・ｫ倥＆.
+		ALIGN16	DirectX::XMMATRIX mWorld;		// ワールド行列.
+		ALIGN16	DirectX::XMFLOAT4 vColor;		// カラー.
+		ALIGN16	DirectX::XMFLOAT4 vUV;			// UV座標(x,y のみ使用).
+		ALIGN16	float fViewPortWidth;			// ビューポート幅.
+		ALIGN16	float fViewPortHeight;			// ビューポート高さ.
+		ALIGN16	DirectX::XMFLOAT2 DawSize;		// 描画幅 / 高さ.
 	};
 
-	// DirectX::XMFLOAT2繧偵く繝ｼ縺ｨ縺励※菴ｿ逕ｨ縺吶ｋ縺溘ａ縺ｮ繝上ャ繧ｷ繝･.
+	// DirectX::XMFLOAT2 をキーとして使用するためのハッシュ.
 	struct HASH_D3DXVECTER2
 	{
 		size_t operator()(const DirectX::XMFLOAT2& Key) const
@@ -57,7 +57,7 @@ public:
 		}
 	};
 
-	// DirectX::XMFLOAT2繧呈ｯ碑ｼ・☆繧九◆繧√・遲我ｾ｡豈碑ｼ・未謨ｰ.
+	// DirectX::XMFLOAT2 を比較するための比較演算子関数.
 	struct EQUAL_XMFLOAT2
 	{
 		bool operator()(const DirectX::XMFLOAT2& Left, const DirectX::XMFLOAT2& Right) const
@@ -67,87 +67,57 @@ public:
 	};
 
 public:
-	Sprite2D();
-	~Sprite2D();
+	UISprite();
+	~UISprite();
 
 	/*********************************************************
-	* @brief 蛻晄悄蛹・
-	* @param FilePath・夂判蜒上・繝輔ぃ繧､繝ｫ繝代せ.
+	* @brief 初期化.
+	* @param FilePath・画像ファイルパス.
 	*********************************************************/
 	bool Initialize(const std::filesystem::path& FilePath);
 
-	/*********************************************************
-	* @brief 謠冗判.
-	*********************************************************/
+	// 描画.
 	void Render();
 
-public: // Getter縲ヾetter.
-
-	/*********************************************************
-	* @brief RectTransform繧貞叙蠕・
-	*********************************************************/
+public: // Getter、Setter.
+	
 	const std::unique_ptr<RectTransform>& GetRectTransform() const;
 
-	/*********************************************************
-	* @brief 謠冗判蟷・・ｫ倥＆繧定ｨｭ螳・
-	*********************************************************/
+	// 描画幅 / 高さを設定.
 	void SetDrawSize(const DirectX::XMFLOAT2& DrawSize);
 
-	/*********************************************************
-	* @brief 濶ｲ繧定ｨｭ螳・
-	*********************************************************/
+	// 色を設定.
 	void SetColor(const DirectX::XMFLOAT4& Color);
 
-	/*********************************************************
-	* @brief 雉・ｺ仙錐繧貞叙蠕・
-	*********************************************************/
+	// リソース名を設定.
 	const std::string& GetResourceName() const;
-
-	/*********************************************************
-	* @brief 雉・ｺ仙錐繧定ｨｭ螳・
-	*********************************************************/
 	void SetResourceName(const std::string& Name);
 
-	/*********************************************************
-	* @brief 繝・け繧ｹ繝√Ε繧貞叙蠕・
-	*********************************************************/
+	// テクスチャを取得.
 	ID3D12Resource* GetTexture();
 
 private:
 
-	/*********************************************************
-	* @brief 逕ｻ蜒上し繧､繧ｺ縺ｮ隱ｭ縺ｿ霎ｼ縺ｿ.
-	*********************************************************/
+	// 画像サイズの読み込み.
 	void LoadImageSize(const std::filesystem::path& FilePath);
 
-	/*********************************************************
-	* @brief 繧ｷ繧ｧ繝ｼ繝繝ｼ菴懈・.
-	*********************************************************/
+	//  シェーダー作成.
 	void CreateShader();
 
-	/*********************************************************
-	* @brief 繝｢繝・Ν菴懈・.
-	*********************************************************/
+	// モデル作成
 	HRESULT CreateModel();
 
-	/*********************************************************
-	* @brief 繝・け繧ｹ繝√Ε菴懈・.
-	*********************************************************/
+		
+	// テクスチャ作成.
 	HRESULT CreateTexture(const std::wstring& FilePath);
 
-	/*********************************************************
-	* @brief 繧ｵ繝ｳ繝励Λ菴懈・.
-	*********************************************************/
+	// サンプラー作成.
 	HRESULT CreateSampler();
 
-	/*********************************************************
-	* @brief 繝ｯ繝ｼ繝ｫ繝芽｡悟・繧定ｨ育ｮ・
-	*********************************************************/
+	// ワールド行列の計算.
 	void CalcWorldMatrix();
 
-	/*********************************************************
-	* @brief 謠冗判縺ｫ菴ｿ逕ｨ縺吶ｋ鬆らせ繝舌ャ繝輔ぃ繧貞叙蠕・
-	*********************************************************/
+	// 描画に使用する頂点バッファを取得.
 	ID3D12Resource* GetUseVertexBuffer();
 
 private:
@@ -158,13 +128,12 @@ private:
 	std::unique_ptr<RectTransform> m_pRectTransform;
 
 	std::unordered_map<DirectX::XMFLOAT2, ID3D12Resource*, HASH_D3DXVECTER2, EQUAL_XMFLOAT2> m_pCashVertexBuffers;
-	ID3D12Resource* m_pConstantBuffer;	//繧ｳ繝ｳ繧ｹ繧ｿ繝ｳ繝医ヰ繝・ヵ繧｡.
-	ID3D12Resource* m_pTexture;			//繝・け繧ｹ繝√Ε.
-	ID3D12Resource* m_pSampleLinear;	//DX12遘ｻ陦御ｺ呈鋤逕ｨ・域悴菴ｿ逕ｨ・・
+	ID3D12Resource* m_pConstantBuffer;	// コンスタントバッファ.
+	ID3D12Resource* m_pTexture;			// テクスチャ.
+	ID3D12Resource* m_pSampleLinear;	// DX12 移動用.
 
-	std::string m_ResourceName;			//菴ｿ逕ｨ縺励※縺・ｋ雉・ｺ舌・蜷榊燕.
-	DirectX::XMMATRIX m_WorldMatrix;	//繝ｯ繝ｼ繝ｫ繝芽｡悟・.
-	DirectX::XMFLOAT2 m_DrawSize;		//陦ｨ遉ｺ蟷・・ｫ倥＆.
-	DirectX::XMFLOAT4 m_Color;			//濶ｲ・・,G,B,A・・
+	std::string m_ResourceName;			// 使用している リソースの名前.
+	DirectX::XMMATRIX m_WorldMatrix;	// ワールド行列.
+	DirectX::XMFLOAT2 m_DrawSize;		// 表示幅 / 高さ.
+	DirectX::XMFLOAT4 m_Color;			// 色（R,G,B,A）.
 };
-

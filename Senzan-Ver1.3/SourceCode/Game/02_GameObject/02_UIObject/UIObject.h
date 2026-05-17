@@ -1,7 +1,7 @@
 #pragma once
 #include "Game/02_GameObject/GameObject.h"
 
-class Sprite2D;
+class UISprite;
 
 /**********************************************************
 * @author      : mattya3713.
@@ -31,9 +31,9 @@ public:
 	virtual void Draw() override;
 
 	// 画像の接続.
-	void AttachSprite(const std::shared_ptr<Sprite2D>& Sprite);
+	void AttachSprite(const std::shared_ptr<UISprite>& Sprite);
 	// 画像の取得.
-	std::shared_ptr<Sprite2D> GetSprite();
+	std::shared_ptr<UISprite> GetSprite();
 	// 画像の分離.
 	void DetachSprite();
 
@@ -76,7 +76,7 @@ public: // Getter、Setter.
 	inline void SetUIName(const std::string& Name) { m_UIName = Name; }
 
 protected:
-	std::weak_ptr<Sprite2D> m_pSprite;
+	std::weak_ptr<UISprite> m_pSprite;
 	std::string m_UIName;			// UI名.
 	DirectX::XMFLOAT2 m_Anchor;		// アンカー.
 	DirectX::XMFLOAT2 m_Pivot;		// ピボット.

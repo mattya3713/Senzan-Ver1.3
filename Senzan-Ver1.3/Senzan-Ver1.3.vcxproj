@@ -171,6 +171,7 @@
     <ClInclude Include="SourceCode\Engine\Graphic\DirectX\DirectX12\DirectX12.h" />
     <ClInclude Include="SourceCode\Engine\Graphic\Fade\FadeManager.h" />
     <ClInclude Include="SourceCode\Engine\Resource\Effect\EffectResource.h" />
+    <ClInclude Include="SourceCode\Engine\Resource\Mesh\00_Sprite\UISprite\UISprite.h" />
     <ClInclude Include="SourceCode\Game\01_Scene\00_Base\SceneBase.h" />
     <ClInclude Include="SourceCode\Game\01_Scene\01_Title\Title.h" />
     <ClInclude Include="SourceCode\Game\01_Scene\02_GameMain\GameMain.h" />
@@ -184,8 +185,6 @@
     <ClInclude Include="SourceCode\Game\05_InputDevice\XInput\XInput.h" />
     <ClInclude Include="SourceCode\\Engine\\Graphic\\Fade\Fade.h" />
     <ClInclude Include="SourceCode\\Engine\\Resource\\Mesh\00_Sprite\WorldSprite\WorldSprite.h" />
-    <ClInclude Include="SourceCode\\Engine\\Resource\\Mesh\00_Sprite\UISprite\UISprite.h" />
-    <ClInclude Include="SourceCode\\Engine\\Resource\\Mesh\MeshBase.h" />
     <ClInclude Include="SourceCode\\Engine\\Resource\\Sound\DirectSound.h" />
     <ClInclude Include="SourceCode\Game\00_GameLoop\Loader.h" />
     <ClInclude Include="SourceCode\Game\00_GameLoop\Main.h" />
@@ -219,6 +218,7 @@
     <ClInclude Include="SourceCode\Engine\Utility\Transform\Transform.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="SourceCode\Engine\Resource\Mesh\00_Sprite\WorldSprite\WorldSprite.cpp" />
     <ClCompile Include="SourceCode\Game\01_Scene\00_Base\SceneBase.cpp" />
     <ClCompile Include="SourceCode\Game\01_Scene\01_Title\Title.cpp" />
     <ClCompile Include="SourceCode\Game\01_Scene\02_GameMain\GameMain.cpp" />
@@ -232,9 +232,7 @@
     <ClCompile Include="SourceCode\Game\05_InputDevice\XInput\XInput.cpp" />
     <ClCompile Include="SourceCode\\Engine\\Graphic\\Fade\Fade.cpp" />
     <ClCompile Include="SourceCode\\Engine\\Resource\\Effect\EffectResource.cpp" />
-    <ClCompile Include="SourceCode\\Engine\\Resource\\Mesh\00_Sprite\WorldSprite\WorldSprite.cpp" />
     <ClCompile Include="SourceCode\\Engine\\Resource\\Mesh\00_Sprite\UISprite\UISprite.cpp" />
-    <ClCompile Include="SourceCode\\Engine\\Resource\\Mesh\MeshBase.cpp" />
     <ClCompile Include="SourceCode\\Engine\\Resource\\Sound\DirectSound.cpp" />
     <ClCompile Include="SourceCode\Game\00_GameLoop\Loader.cpp" />
     <ClCompile Include="SourceCode\Game\00_GameLoop\Main.cpp" />
@@ -249,7 +247,6 @@
     <ClCompile Include="SourceCode\Engine\Graphic\Fade\FadeManager.cpp" />
     <ClCompile Include="SourceCode\Game\00_GameLoop\Scene\SceneManager.cpp" />
     <ClCompile Include="SourceCode\Game\00_GameLoop\Scene\SceneRegistry.generated.cpp" />
-    <ClCompile Include="SourceCode\Engine\Resource\Mesh\00_Sprite\UIObjectManager.cpp" />
     <ClCompile Include="SourceCode\Engine\Utility\Buffer\Buffer.cpp" />
     <ClCompile Include="SourceCode\Engine\Utility\FileManager\FileManager.cpp" />
     <ClCompile Include="SourceCode\Engine\Utility\Hash\Crc32Table\HashTable.cpp" />
