@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  // ...existing code...
+  <ItemGroup>
+    <None Include="Data\Shader\Dbg\README.md" />
+    <None Include="Doc\CODING_STYLE.md" />
+    <None Include="SourceCode\\Engine\\Graphic\\Shader\DebugDraw.hlsl" />
+    <None Include="SourceCode\\Engine\\Graphic\\Shader\Skinning.hlsl" />
+    <None Include="SourceCode\Game\00_GameLoop\Scene\SceneRegistry.Generate.targets" />
+    <None Include="SourceCode\Engine\Utility\Assert\Assert.inl" />
+    <None Include="SourceCode\Engine\Utility\Math\Easing\Easing.inl" />
+    <None Include="SourceCode\Engine\Utility\Math\Math.inl" />
+    <None Include="SourceCode\Engine\Utility\String\FilePath\FilePath.inl" />
+    <None Include="Tools\GenerateSceneRegistry.ps1" />
+  </ItemGroup>
+  // ...existing code...
+</Project>

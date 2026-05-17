@@ -1,0 +1,7 @@
+{
+  "name": "senzan-ver1-3",
+  "version-string": "1.0.0",
+  "dependencies": [
+    "assimp"
+  ]
+}
