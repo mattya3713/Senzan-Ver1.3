@@ -12,7 +12,7 @@
 /**********************************************************
 * @author   : mattya3713.
 * @date     : 2026/05/17.
-* @brief    : リソース管理の統括（Presenter層）.
+* @brief    : リソース管理の統括(Presenter層).
 **********************************************************/
 
 class ResourceManager final : public Singleton<ResourceManager> {

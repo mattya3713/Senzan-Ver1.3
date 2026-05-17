@@ -1,11 +1,5 @@
 #include "Engine/Resource/ResourceManager.h"
 
-/**********************************************************
-* @author   : mattya3713.
-* @date     : 2026/05/17.
-* @brief    : リソース管理の統括実装（Presenter層）.
-**********************************************************/
-
 void ResourceManager::Initialize(int ThreadCount) {
 	m_upLoader = std::make_unique<ResourceLoader>();
 	m_upLoader->Initialize(ThreadCount);
@@ -46,7 +40,7 @@ void ResourceManager::RequestLoadEffect(const std::string& Name, const std::stri
 		return;
 	}
 
-	LoadRequest request;
+	LoadRequest request = {};
 	request.ResourceKey = Name;
 	request.FilePath = Path;
 	request.Type = eResourceType::Effect;
@@ -61,7 +55,7 @@ void ResourceManager::RequestLoadTexture(const std::string& Key, const std::stri
 		return;
 	}
 
-	LoadRequest request;
+	LoadRequest request = {};
 	request.ResourceKey = Key;
 	request.FilePath = Path;
 	request.Type = eResourceType::Texture;
@@ -76,7 +70,7 @@ void ResourceManager::RequestLoadFBX(const std::string& Name, const std::string&
 		return;
 	}
 
-	LoadRequest request;
+	LoadRequest request = {};
 	request.ResourceKey = Name;
 	request.FilePath = Path;
 	request.Type = eResourceType::FBX;
@@ -91,7 +85,7 @@ void ResourceManager::RequestLoadSprite(const std::string& Key, const std::strin
 		return;
 	}
 
-	LoadRequest request;
+	LoadRequest request = {};
 	request.ResourceKey = Key;
 	request.FilePath = Path;
 	request.Type = eResourceType::Sprite;
@@ -101,6 +95,7 @@ void ResourceManager::RequestLoadSprite(const std::string& Key, const std::strin
 	m_ResourceTypes[Key] = eResourceType::Sprite;
 }
 
+// ロード完了確認.
 bool ResourceManager::IsResourceReady(const std::string& Key) const {
 	auto it = m_LoadingStatus.find(Key);
 	if (it == m_LoadingStatus.end()) {
@@ -109,6 +104,7 @@ bool ResourceManager::IsResourceReady(const std::string& Key) const {
 	return it->second;
 }
 
+// リソース取得.
 void* ResourceManager::GetResource(const std::string& Key) {
 	auto it = m_ResourceCache.find(Key);
 	if (it == m_ResourceCache.end()) {

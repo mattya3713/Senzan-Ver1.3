@@ -21,16 +21,16 @@ private:
 	~SpriteResource() = default;
 
 public:
-	// 初期化・読み込み関数（ResourceManager から呼ばれる想定）.
-	// @brief DirectX12 デバイスの初期化が必要な場合.
-	bool Create(ID3D12Device* pDevice, ID3D12CommandQueue* pCommandQueue);
+	/*******************************************
+	* @brief DirectX12 デバイスの初期化が必要な場合.
+	* @param pDevice DirectX12デバイス.
+	* @param pCommandQueue コマンドキュー.
+	* @return 成功したかどうか.
+	*******************************************/
+	bool Init(ID3D12Device* pDevice, ID3D12CommandQueue* pCommandQueue);
 
-	// @brief スプライト画像データの一括読み込み.
 	bool LoadData();
 
-	// スプライトの取得.
-	// @param Name リソース名（ファイルパス等）.
-	// @return ID3D12Resource ポインタ、見つからなければ nullptr.
 	ID3D12Resource* GetResource(const std::string& Name);
 
 private:

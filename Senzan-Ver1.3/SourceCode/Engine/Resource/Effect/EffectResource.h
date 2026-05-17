@@ -17,11 +17,10 @@ public:
 	EffectResource();
 	~EffectResource();
 
-	// 読み込み関連関数.ResourceManager から呼ばれる想定.
-	bool Create();   // 初期化が必要な場合.
-	bool LoadData(); // 全データ読み込み.
+	bool Create();
 
-	// エフェクトの取得.
+	bool LoadData();
+
 	static ::Effekseer::EffectRef GetResource(const std::string& name);
 
 private:

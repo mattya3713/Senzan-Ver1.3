@@ -23,16 +23,16 @@ private:
 	~FBXModelResource() = default;
 
 public:
-	// 初期化・読み込み関数（ResourceManager から呼ばれる想定）.
-	// @brief DirectX12 デバイスの初期化が必要な場合.
+	/*******************************************
+	* @brief DirectX12 デバイスの初期化が必要な場合.
+	* @param pDevice DirectX12デバイス.
+	* @param pCommandQueue コマンドキュー.
+	* @return 成功したかどうか.
+	*******************************************/
 	bool Create(ID3D12Device* pDevice, ID3D12CommandQueue* pCommandQueue);
 
-	// @brief FBX モデルデータの一括読み込み.
 	bool LoadData();
 
-	// FBX モデルの取得.
-	// @param Name リソース名（モデル名等）.
-	// @return FBXModel ポインタ、見つからなければ nullptr.
 	FBXModel* GetResource(const std::string& Name);
 
 private:

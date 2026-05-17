@@ -1,12 +1,12 @@
 #include "Engine/Resource/Mesh/00_Sprite/SpriteResource.h"
 
-/**********************************************************
-* @author   : mattya3713.
-* @date     : 2026/05/17.
-* @brief    : スプライト画像リソースの管理実装.
-**********************************************************/
-
-bool SpriteResource::Create(ID3D12Device* pDevice, ID3D12CommandQueue* pCommandQueue) {
+/*******************************************
+* @brief DirectX12 デバイスの初期化が必要な場合.
+* @param pDevice DirectX12デバイス.
+* @param pCommandQueue コマンドキュー.
+* @return 成功したかどうか.
+*******************************************/
+bool SpriteResource::Init(ID3D12Device* pDevice, ID3D12CommandQueue* pCommandQueue) {
 	m_pDevice = pDevice;
 	m_pCommandQueue = pCommandQueue;
 

@@ -7,6 +7,12 @@
 * @brief    : FBX モデルリソースの管理実装.
 **********************************************************/
 
+/*******************************************
+* @brief DirectX12 デバイスの初期化が必要な場合.
+* @param pDevice DirectX12デバイス.
+* @param pCommandQueue コマンドキュー.
+* @return 成功したかどうか.
+*******************************************/
 bool FBXModelResource::Create(ID3D12Device* pDevice, ID3D12CommandQueue* pCommandQueue) {
 	m_pDevice = pDevice;
 	m_pCommandQueue = pCommandQueue;
