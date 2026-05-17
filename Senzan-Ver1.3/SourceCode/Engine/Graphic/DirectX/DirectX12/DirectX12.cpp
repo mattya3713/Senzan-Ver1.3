@@ -194,7 +194,7 @@ void DirectX12::UpdateSceneBuffer()
 
 		DirectX::XMFLOAT3 up(0, 1, 0); // ワールドの上方向は固定
 
-		m_pMappedSceneData->view =
+		m_pMappedSceneData->View =
 			DirectX::XMMatrixLookAtLH(
 			DirectX::XMLoadFloat3(&currentEye),
 			DirectX::XMLoadFloat3(&target),
@@ -202,7 +202,7 @@ void DirectX12::UpdateSceneBuffer()
 
 		DXGI_SWAP_CHAIN_DESC1 desc = {};
 		auto result = m_pSwapChain->GetDesc1(&desc);
-		m_pMappedSceneData->proj =
+		m_pMappedSceneData->Proj =
 			DirectX::XMMatrixPerspectiveFovLH
 			(DirectX::XM_PIDIV4, // 画角は45°
 			static_cast<float>(desc.Width) / static_cast<float>(desc.Height), // アス比
@@ -210,7 +210,7 @@ void DirectX12::UpdateSceneBuffer()
 			1000.0f // 遠い方
 			);
 
-		m_pMappedSceneData->eye = currentEye; // 定数バッファのeyeも更新
+		m_pMappedSceneData->Eye = currentEye; // 定数バッファのeyeも更新
 	}
 	else
 	{
@@ -269,30 +269,6 @@ void DirectX12::EndDraw()
 	m_pCmdAllocator->Reset();
 	// 再びコマンドリストをためる準備.
 	m_pCmdList->Reset(m_pCmdAllocator.Get(), nullptr);
-}
-
-// スワップチェーンを取得.
-const MyComPtr<IDXGISwapChain4> DirectX12::GetSwapChain()
-{
-	return m_pSwapChain;
-}
-
-// DirectX12デバイスを取得.
-const MyComPtr<ID3D12Device> DirectX12::GetDevice()
-{
-	return m_pDevice12;
-}
-
-// コマンドリストを取得.
-const MyComPtr<ID3D12GraphicsCommandList> DirectX12::GetCommandList()
-{
-	return m_pCmdList;
-}
-
-// コマンドキューを取得.
-const MyComPtr<ID3D12CommandQueue> DirectX12::GetCommandQueue()
-{
-	return m_pCmdQueue;
 }
 
 // テクスチャを取得.
@@ -640,7 +616,7 @@ void DirectX12::CreateSceneDesc()
 		DirectX::XMFLOAT3 target_pos(0, 0, 0);
 		DirectX::XMFLOAT3 up_vec(0, 1, 0);
 
-		m_pMappedSceneData->view =
+		m_pMappedSceneData->View =
 			DirectX::XMMatrixLookAtLH(
 			DirectX::XMLoadFloat3(&eye_pos),
 			DirectX::XMLoadFloat3(&target_pos),
@@ -649,7 +625,7 @@ void DirectX12::CreateSceneDesc()
 		// アスペクト比はレンダリングループ内で更新するか、Dx12::Initialize()で一度設定
 		// ここでは、既に m_pSwapChain が初期化されていると仮定し、その幅と高さを使用
 		float aspectRatio = static_cast<float>(m_SwapChainDesc.Width) / static_cast<float>(m_SwapChainDesc.Height);
-		m_pMappedSceneData->proj =
+		m_pMappedSceneData->Proj =
 			DirectX::XMMatrixPerspectiveFovLH
 			(DirectX::XM_PIDIV4, // 画角は45°
 			aspectRatio,         // アス比
@@ -657,7 +633,7 @@ void DirectX12::CreateSceneDesc()
 			1000.0f              // 遠い方
 			);
 
-		m_pMappedSceneData->eye = eye_pos;
+		m_pMappedSceneData->Eye = eye_pos;
 	}
 	else {
 		std::cerr << "Error: m_pRawMappedSceneData is null after mapping Scene Constant Buffer." << std::endl;

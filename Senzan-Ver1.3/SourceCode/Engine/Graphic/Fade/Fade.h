@@ -20,7 +20,7 @@ public:
 	// フェードを開始.
 	void StartFade(const FadeType type);
 
-public: // Getter、Setter.
+public:
 
 	// フェード中か.
 	const bool IsFading() const;
