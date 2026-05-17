@@ -19,6 +19,7 @@
 #include <DirectXMath.h>
 #include "..\..\..\..\..\Data\Library\DirectXTex\DirectXTex\DirectXTex.h"
 #include <d3dcompiler.h>
+#include "..\..\..\..\..\Data\Library\Effekseer\include\Effekseer.h"
 
 namespace DirectX
 {
@@ -36,7 +37,7 @@ namespace DirectX
 
 /**********************************************************
 * @author      : mattya3713.
-* @date        : 2025/02/18.
+* @date        : 2026/02/18.
 * @brief       : DirectX12 初期化とセットアップ.
 **********************************************************/
 
@@ -122,6 +123,26 @@ public:
 
 	// GPU処理完了を待機.
 	void WaitForGPU();
+
+	// View層：描画メソッド群.
+	// @brief エフェクトの描画.
+	// @param Effect Effekseer::EffectRef（リソースマネージャー経由で取得）.
+	// @param Position 描画位置.
+	// @param Rotation 回転情報.
+	// @param Scale スケール.
+	void DrawEffect(::Effekseer::EffectRef Effect, const DirectX::XMFLOAT3& Position, const DirectX::XMFLOAT3& Rotation = DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), const DirectX::XMFLOAT3& Scale = DirectX::XMFLOAT3(1.0f, 1.0f, 1.0f));
+
+	// @brief スプライトの描画.
+	// @param Texture テクスチャリソース（ID3D12Resource）.
+	// @param Position 描画位置.
+	// @param Color カラー.
+	// @param Width 描画幅.
+	// @param Height 描画高さ.
+	void DrawSprite(ID3D12Resource* Texture, const DirectX::XMFLOAT2& Position, const DirectX::XMFLOAT4& Color = DirectX::XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f), float Width = 100.0f, float Height = 100.0f);
+
+	// @brief FBX モデルの描画.
+	// @param pModel FBXModel ポインタ（リソースマネージャー経由で取得）.
+	void DrawFBXModel(class FBXModel* pModel);
 
 private:
 

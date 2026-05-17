@@ -1128,3 +1128,29 @@ bool DirectX12::CreatePipelineStateAndRootSignature()
 	OutputDebugStringA("[DirectX12::CreatePipelineStateAndRootSignature] PSO and Root Signature created successfully\n");
 	return true;
 }
+
+void DirectX12::DrawEffect(::Effekseer::EffectRef Effect, const DirectX::XMFLOAT3& Position, const DirectX::XMFLOAT3& Rotation, const DirectX::XMFLOAT3& Scale) {
+	// TODO: Effekseer マネージャーの初期化・取得.
+	// TODO: Effect オブジェクトから描画パラメータを設定.
+	// TODO: 位置・回転・スケール情報を反映した行列を計算.
+	// TODO: Effekseer の描画コマンド実行.
+	// 現段階では、スタブ実装.
+}
+
+void DirectX12::DrawSprite(ID3D12Resource* Texture, const DirectX::XMFLOAT2& Position, const DirectX::XMFLOAT4& Color, float Width, float Height) {
+	// TODO: スプライト描画用の頂点バッファ・インデックスバッファ生成.
+	// TODO: テクスチャ座標設定.
+	// TODO: 位置・色・サイズ情報を定数バッファに設定.
+	// TODO: 描画コマンド実行（DrawIndexedInstanced など）.
+	// 現段階では、スタブ実装.
+}
+
+void DirectX12::DrawFBXModel(FBXModel* pModel) {
+	// TODO: FBXModel の検証（nullptr チェック）.
+	// TODO: FBXModel のワールド・ビュー・プロジェクション行列を設定.
+	// TODO: メッシュ情報（頂点、インデックス）をコマンドリストにセット.
+	// TODO: ボーン変換情報（スキニング）を定数バッファに反映.
+	// TODO: 描画コマンド実行（DrawIndexedInstanced など）.
+	// 現段階では、スタブ実装.
+}
+

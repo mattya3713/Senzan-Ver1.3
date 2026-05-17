@@ -9,6 +9,8 @@
 // ライブラリのリンク設定は .vcxproj ファイルで管理する.
 // 将来選択で LNK1104 が発生しないため pragma 指定の使用はしない.
 
+class ResourceManager;  // Forward declaration.
+
 class EffectResource final : public Singleton<EffectResource>
 {
 public:

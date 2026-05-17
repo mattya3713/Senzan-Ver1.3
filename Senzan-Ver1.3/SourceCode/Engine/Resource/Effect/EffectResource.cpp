@@ -1,4 +1,5 @@
 #include "EffectResource.h"
+#include "Engine/Resource/ResourceManager.h"
 //#include "System\10_Singleton\ResourceManager\EffectManager\EffekseerManager.h"
 #include <filesystem>
 
@@ -54,9 +55,6 @@ bool EffectResource::LoadData()
 
 ::Effekseer::EffectRef EffectResource::GetResource(const std::string& name)
 {
-  /*  auto& pI = GetInstance();
-    if (pI.m_pEffects.count(name) > 0) {
-        return pI.m_pEffects[name];
-    }*/
-    return nullptr;
+    // ResourceManager に委譲.
+    return ResourceManager::GetInstance().GetEffect(name);
 }

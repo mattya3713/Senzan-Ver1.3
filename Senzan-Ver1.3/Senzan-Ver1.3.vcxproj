@@ -171,7 +171,13 @@
     <ClInclude Include="SourceCode\Engine\Graphic\DirectX\DirectX12\DirectX12.h" />
     <ClInclude Include="SourceCode\Engine\Graphic\Fade\FadeManager.h" />
     <ClInclude Include="SourceCode\Engine\Resource\Effect\EffectResource.h" />
+    <ClInclude Include="SourceCode\Engine\Resource\Mesh\00_Sprite\SpriteResource.h" />
     <ClInclude Include="SourceCode\Engine\Resource\Mesh\00_Sprite\UISprite\UISprite.h" />
+    <ClInclude Include="SourceCode\Engine\Resource\Mesh\01_FBX\FBXModelResource.h" />
+    <ClInclude Include="SourceCode\Engine\Resource\ResourceCache.h" />
+    <ClInclude Include="SourceCode\Engine\Resource\ResourceLoader.h" />
+    <ClInclude Include="SourceCode\Engine\Resource\ResourceManager.h" />
+    <ClInclude Include="SourceCode\Engine\Utility\MultiThread\ThreadSafeQueue.h" />
     <ClInclude Include="SourceCode\Game\01_Scene\00_Base\SceneBase.h" />
     <ClInclude Include="SourceCode\Game\01_Scene\01_Title\Title.h" />
     <ClInclude Include="SourceCode\Game\01_Scene\02_GameMain\GameMain.h" />
@@ -218,7 +224,11 @@
     <ClInclude Include="SourceCode\Engine\Utility\Transform\Transform.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="SourceCode\Engine\Resource\Mesh\00_Sprite\SpriteResource.cpp" />
     <ClCompile Include="SourceCode\Engine\Resource\Mesh\00_Sprite\WorldSprite\WorldSprite.cpp" />
+    <ClCompile Include="SourceCode\Engine\Resource\Mesh\01_FBX\FBXModelResource.cpp" />
+    <ClCompile Include="SourceCode\Engine\Resource\ResourceLoader.cpp" />
+    <ClCompile Include="SourceCode\Engine\Resource\ResourceManager.cpp" />
     <ClCompile Include="SourceCode\Game\01_Scene\00_Base\SceneBase.cpp" />
     <ClCompile Include="SourceCode\Game\01_Scene\01_Title\Title.cpp" />
     <ClCompile Include="SourceCode\Game\01_Scene\02_GameMain\GameMain.cpp" />
